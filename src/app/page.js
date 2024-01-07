@@ -1,3 +1,11 @@
+import Dashboard from "@/component/dashboard/dashboard";
+
 export default function Home() {
-  return <h1>Hello World!</h1>;
+  return (
+    <>
+      [Home]
+      <Dashboard />
+      [End Home]
+    </>
+  );
 }
