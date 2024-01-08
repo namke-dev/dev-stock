@@ -1,12 +1,42 @@
-import React from "react";
-import { FaSearch } from "react-icons/fa";
+"use client";
+
+import React, { useState } from "react";
+import { FaSearch, FaTimes } from "react-icons/fa";
+import { fetchFromApi } from "../../api/stock-api";
+import SearSymbolResult from "./search-symbol-result";
 
 export default function SearchBar() {
+  const [input, setInput] = useState("");
+  const [bestMatches, setBestMatches] = useState([]);
+
+  const clear = () => {
+    setInput("");
+    setBestMatches([]);
+  };
+
+  const updateBestMatches = async () => {
+    console.log("updateBestMatches");
+    try {
+      if (input) {
+        const url = `search?query=${input}`;
+        const searchResult = await fetchFromApi(url);
+        console.log(searchResult);
+
+        const result = searchResult.data.stock;
+        setBestMatches(result);
+      }
+    } catch (error) {
+      setBestMatches([]);
+      console.log(error);
+    }
+  };
+
   return (
-    <div className="flex flex-col md:flex-row px-2 md:items-center justify-center md:justify-start h-full w-full md:gap-4">
-      <p className="mb-1">Search symbol</p>
-      <div
-        className="flex items-center
+    <>
+      <div className="flex flex-col md:flex-row px-2 md:items-center justify-center md:justify-start h-full w-full md:gap-4">
+        <p className="mb-1">Search symbol</p>
+        <div
+          className="flex items-center
         md:my-4 border-2
         rounded-md
         relative
@@ -14,18 +44,45 @@ export default function SearchBar() {
         w-full
         max-w-[30rem]
         h-10"
-      >
-        <input
-          type="text"
-          className="mx-3 focus:outline-0 flex flex-grow text-gray-900"
-          placeholder="ex: google"
-        />
+        >
+          <input
+            type="text"
+            className="mx-3 focus:outline-0 flex flex-grow text-gray-900"
+            placeholder="ex: google"
+            value={input}
+            onChange={(event) => {
+              setInput(event.target.value);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                updateBestMatches();
+              }
+            }}
+          />
 
-        {/* Search button */}
-        <button className="h-8 w-14 bg-gray-500 rounded-sm flex justify-center items-center mx-[0.15rem]">
-          <FaSearch className="h-4 w-4 fill-gray-50" />
-        </button>
+          {/* Clear button */}
+          {input && (
+            <button onClick={clear} className="m-1">
+              <FaTimes className="h-4 w-4 fill-gray-500" />
+            </button>
+          )}
+
+          {/* Search button */}
+          <button
+            className="h-8 w-14 bg-gray-500 rounded-sm flex justify-center items-center mx-[0.15rem]"
+            onClick={updateBestMatches}
+          >
+            <FaSearch className="h-4 w-4 fill-gray-50" />
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Search result */}
+      {input && bestMatches.length > 0 ? (
+        <SearSymbolResult results={bestMatches} />
+      ) : (
+        ""
+      )}
+    </>
   );
 }
