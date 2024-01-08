@@ -21,7 +21,6 @@ export default function RootLayout({ children }) {
         relative
         overflow-y-auto
         custom-scrollbar
-        custom-scrollbar-dark
 
         dark:bg-gray-900 
         dark:text-gray-50 
@@ -29,7 +28,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

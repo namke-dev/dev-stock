@@ -10,8 +10,8 @@ export default function Dashboard() {
   return (
     // Dashboard container
     <div
-      className="h-[97vh] 
-      w-full 
+      className="h-[96.7vh] 
+      w-full
       grid 
       grid-cols-1 md:grid-cols-3
       grid-row-8 md:grid-row-12
