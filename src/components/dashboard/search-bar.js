@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 export default function SearchBar() {
   return (
     <div className="flex flex-col md:flex-row px-2 md:items-center justify-center md:justify-start h-full w-full md:gap-4">
-      <p>Search symbol</p>
+      <p className="mb-1">Search symbol</p>
       <div
         className="flex items-center
         md:my-4 border-2
