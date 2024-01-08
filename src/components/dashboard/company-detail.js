@@ -2,8 +2,8 @@ import React from "react";
 
 export default function CompanyDetail() {
   const detailListType = {
-    symbol: "Symbol",
-    name: "Name",
+    // symbol: "Symbol",
+    // name: "Name",
     // price: "Price",
     // company_country: "Country",
     // company_state: "State",
@@ -31,10 +31,10 @@ export default function CompanyDetail() {
     <>
       <ul
         className="flex flex-col 
-        divide-y-0
         justify-between 
         w-full h-auto
         text-gray-600
+        divide-y-2
         px-2
         py-0
         "
