@@ -8,11 +8,11 @@ export default function SearchBar() {
       <div
         className="flex items-center
         my-4 border-2
-        rounded-lg
+        rounded-md
         relative
         z-50
         w-96
-        h-12"
+        h-10"
       >
         <input
           type="text"
@@ -21,8 +21,8 @@ export default function SearchBar() {
         />
 
         {/* Search button */}
-        <button className="h-8 w-8 bg-gray-600 rounded-md flex justify-center items-center mx-2">
-          <FaSearch className="h-4 w-4 fill-gray-200" />
+        <button className="h-8 w-10 bg-gray-400 rounded-md flex justify-center items-center mx-1">
+          <FaSearch className="h-4 w-4 fill-gray-100" />
         </button>
       </div>
     </div>

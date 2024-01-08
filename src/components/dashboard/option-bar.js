@@ -9,12 +9,12 @@ export default function OptionBar() {
     >
       <div className="flex flex-row">
         <p>Feature</p>
-        <ul className="fex flex row gap-4 text-black ml-12">
+        <ul className="fex flex row gap-2 text-gray-700 ml-12">
           {Object.values(PAGE_FEATURE).map((option) => {
             return (
               <li
                 key={option}
-                className="rounded-lg bg-gray-100 px-2 border hover:border-black/75 hover:bg-gray-300 cursor-pointer"
+                className="rounded-lg bg-gray-100 px-2 border hover:border-black/85 hover:bg-gray-200 cursor-pointer"
               >
                 {option}
               </li>
@@ -25,12 +25,12 @@ export default function OptionBar() {
 
       <div className="flex flex-row">
         <p>Market trend</p>
-        <ul className="fex flex row gap-4 text-black ml-12">
+        <ul className="fex flex row gap-2 text-gray-700 ml-12">
           {Object.values(MARKET_TREND_TYPE).map((option) => {
             return (
               <li
                 key={option}
-                className="rounded-lg bg-gray-100 px-2 border hover:border-black/75 hover:bg-gray-300 cursor-pointer"
+                className="rounded-lg bg-gray-100 px-2 border hover:border-black/85 hover:bg-gray-200 cursor-pointer"
               >
                 {option}
               </li>

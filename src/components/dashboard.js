@@ -4,12 +4,13 @@ import OptionBar from "./dashboard/option-bar";
 import SearchBar from "./dashboard/search-bar";
 import StockOverview from "./dashboard/stock-overview";
 import CompanyDetail from "./dashboard/company-detail";
+import Chart from "./dashboard/chart";
 
 export default function Dashboard() {
   return (
     // Dashboard container
     <div
-      className="h-[94vh] 
+      className="h-[97vh] 
       w-full 
       grid 
       grid-cols-1 md:grid-cols-3
@@ -48,7 +49,7 @@ export default function Dashboard() {
         row-span-9"
       >
         <Cart>
-          <p>Chart</p>
+          <Chart />
         </Cart>
       </div>
 
