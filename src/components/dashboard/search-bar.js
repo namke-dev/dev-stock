@@ -22,8 +22,8 @@ export default function SearchBar() {
         />
 
         {/* Search button */}
-        <button className="h-8 w-10 bg-gray-400 rounded-md flex justify-center items-center mx-1">
-          <FaSearch className="h-4 w-4 fill-gray-100" />
+        <button className="h-8 w-14 bg-gray-500 rounded-sm flex justify-center items-center mx-[0.15rem]">
+          <FaSearch className="h-4 w-4 fill-gray-50" />
         </button>
       </div>
     </div>
