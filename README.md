@@ -37,4 +37,5 @@ Create project
 npx create-next-app@latest
 npm install react-icons --save
 npm install recharts
+npm install axios
 ```
