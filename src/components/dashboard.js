@@ -10,11 +10,11 @@ export default function Dashboard() {
   return (
     // Dashboard container
     <div
-      className="h-[96.7vh] 
+      className="h-[200vh] md:h-[96.7vh] 
       w-full
       grid 
       grid-cols-1 md:grid-cols-3
-      grid-row-8 md:grid-row-12
+      grid-row-10 md:grid-row-12
       auto-rows-fr
       gap-1 px-2 py-2
       font-quicksand text-indigo-800 text-md"
@@ -23,7 +23,7 @@ export default function Dashboard() {
       <div
         className="
         col-span-1 md:col-span-3
-        row-span-1
+        row-span-2 md:row-span-1
         flex justify-center items-center"
       >
         <Cart>
@@ -45,8 +45,8 @@ export default function Dashboard() {
 
       {/* DashBoard chart */}
       <div
-        className="col-span-2
-        row-span-9"
+        className="col-span-1 md:col-span-2
+        row-span-3 md:row-span-9"
       >
         <Cart>
           <Chart />
@@ -54,7 +54,7 @@ export default function Dashboard() {
       </div>
 
       {/* Dashboard Company stock overview */}
-      <div className="row-span-2  md:row-span-2">
+      <div className="row-span-1 md:row-span-2">
         <Cart>
           <StockOverview />
         </Cart>

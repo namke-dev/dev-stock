@@ -4,12 +4,12 @@ import React from "react";
 export default function OptionBar() {
   return (
     <div
-      className="flex flex-col items-start justify-center h-full px-2 gap-1
+      className="flex flex-col items-start md:justify-center h-full px-2 gap-1
       text-sm "
     >
-      <div className="flex flex-row">
-        <p>Feature</p>
-        <ul className="fex flex row gap-2 text-gray-700 ml-12">
+      <div className="flex flex-col md:flex-row w-full">
+        <p className="flex justify-start mt-3 my-2 md:m-0">Feature</p>
+        <ul className="flex flex-row flex-wrap gap-2 text-gray-700 md:ml-12">
           {Object.values(PAGE_FEATURE).map((option) => {
             return (
               <li
@@ -23,9 +23,9 @@ export default function OptionBar() {
         </ul>
       </div>
 
-      <div className="flex flex-row">
-        <p>Market trend</p>
-        <ul className="fex flex row gap-2 text-gray-700 ml-12">
+      <div className="flex flex-col md:flex-row w-full">
+        <p className="flex justify-start mt-3 my-2 md:m-0">Market trend</p>
+        <ul className="flex flex-row flex-wrap gap-2 text-gray-700 md:ml-12">
           {Object.values(MARKET_TREND_TYPE).map((option) => {
             return (
               <li

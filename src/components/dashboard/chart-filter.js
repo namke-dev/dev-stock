@@ -4,7 +4,7 @@ export default function ChartFilter({ text, isActive, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`w-10 h-6 m-2 border-1 
+      className={`w-10 h-6 m-1 md:m-2 border-1 
       rounded-md
       flex items-center justify-center
       cursor-pointer

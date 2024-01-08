@@ -32,9 +32,15 @@ export default function Chart() {
   };
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="h-[20rem] md:h-full w-full flex flex-col">
       <div>
-        <ul className="flex top-2 right-2 z-40 gap-2">
+        <ul
+          className=" flex flex-row flex-wrap 
+          z-40 md:gap-2
+          items-center 
+          justify-start
+          md:justify-end"
+        >
           {Object.values(CHART_CONFIG).map((item) => {
             return (
               <li key={item}>
