@@ -1,21 +1,24 @@
 import React from "react";
 import Cart from "./cart";
+import OptionBar from "./dashboard/option-bar";
+import SearchBar from "./dashboard/search-bar";
+import StockOverview from "./dashboard/stock-overview";
+import CompanyDetail from "./dashboard/company-detail";
 
 export default function Dashboard() {
   return (
     // Dashboard container
     <div
-      className="h-[94vh] w-full
+      className="h-[94vh] 
+      w-full 
       grid 
       grid-cols-1 md:grid-cols-3
-      grid-row-8 md:grid-row-7
+      grid-row-8 md:grid-row-12
       auto-rows-fr
-      gap-2 px-10
-      py-5
-      font-quicksand
-      text-indigo-600 !text-lg"
+      gap-1 px-2 py-2
+      font-quicksand text-indigo-800 text-md"
     >
-      {/* Dashboard header */}
+      {/* Option Bar */}
       <div
         className="
         col-span-1 md:col-span-3
@@ -23,11 +26,11 @@ export default function Dashboard() {
         flex justify-center items-center"
       >
         <Cart>
-          <p>quick access</p>
+          <OptionBar />
         </Cart>
       </div>
 
-      {/* Dashboard header */}
+      {/* Search bar */}
       <div
         className="
         col-span-1 md:col-span-3
@@ -35,31 +38,31 @@ export default function Dashboard() {
         flex justify-center items-center"
       >
         <Cart>
-          <p className="">search bar</p>
+          <SearchBar />
         </Cart>
       </div>
 
       {/* DashBoard chart */}
       <div
         className="col-span-2
-        row-span-5"
+        row-span-9"
       >
         <Cart>
-          <p>chart</p>
+          <p>Chart</p>
         </Cart>
       </div>
 
       {/* Dashboard Company stock overview */}
-      <div className="row-span-2  md:row-span-1">
+      <div className="row-span-2  md:row-span-2">
         <Cart>
-          <p>trend</p>
+          <StockOverview />
         </Cart>
       </div>
 
       {/* Dashboard Company Infor */}
-      <div className="row-span-5 md:row-span-4">
+      <div className="row-span-5 md:row-span-7">
         <Cart>
-          <p>financial infor</p>
+          <CompanyDetail />
         </Cart>
       </div>
     </div>
