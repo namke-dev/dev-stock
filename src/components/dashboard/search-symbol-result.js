@@ -1,10 +1,14 @@
-import React from "react";
+import StockContext from "@/context/stock-context";
+import ThemeContext from "@/context/theme-context";
+import React, { useContext } from "react";
 
 export default function SearSymbolResult({ results }) {
-  const darkMode = false;
+  const { darkMode } = useContext(ThemeContext);
+  const { setStockSymbol } = useContext(StockContext);
+
   return (
     <ul
-      className={`absolute top-12 rounded-md 
+      className={`absolute top-10 rounded-md 
         h-auto  w-full
         overflow-y-scroll 
         border-2
@@ -13,7 +17,7 @@ export default function SearSymbolResult({ results }) {
     ${
       darkMode
         ? "bg-gray-900 border-gray-800 custom-scrollbar-dark"
-        : "bg-white  border-neutral-300"
+        : "bg-gray-50  border-neutral-300"
     }`}
     >
       {results &&
@@ -25,6 +29,7 @@ export default function SearSymbolResult({ results }) {
           ${darkMode ? "hover:bg-indigo-600" : "hover:bg-indigo-200"}`}
               onClick={() => {
                 console.log(item.symbol);
+                setStockSymbol(item.symbol);
               }}
             >
               <span>{item.name}</span>
