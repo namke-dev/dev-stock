@@ -21,7 +21,6 @@ export default function RootLayout({ children }) {
         relative
         overflow-y-auto
         custom-scrollbar
-
         dark:bg-gray-900 
         dark:text-gray-50 
         dark:text-opacity-90`}
