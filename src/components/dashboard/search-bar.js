@@ -4,29 +4,29 @@ import React, { useState } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import { fetchFromApi } from "../../api/stock-api";
 import SearSymbolResult from "./search-symbol-result";
+import { mockSearchResponse } from "@/mock/mock-data";
 
 export default function SearchBar() {
   const [input, setInput] = useState("");
-  const [bestMatches, setBestMatches] = useState([]);
+  const [stockMatches, setStockMatches] = useState([]);
 
   const clear = () => {
     setInput("");
-    setBestMatches([]);
+    setStockMatches([]);
   };
 
   const updateBestMatches = async () => {
     console.log("updateBestMatches");
     try {
       if (input) {
-        const url = `search?query=${input}`;
-        const searchResult = await fetchFromApi(url);
-        console.log(searchResult);
-
+        // const url = `search?query=${input}`;
+        // const searchResult = await fetchFromApi(url);
+        const searchResult = mockSearchResponse;
         const result = searchResult.data.stock;
-        setBestMatches(result);
+        setStockMatches(result);
       }
     } catch (error) {
-      setBestMatches([]);
+      setStockMatches([]);
       console.log(error);
     }
   };
@@ -74,15 +74,15 @@ export default function SearchBar() {
           >
             <FaSearch className="h-4 w-4 fill-gray-50" />
           </button>
+
+          {/* Search result */}
+          {input && stockMatches.length > 0 ? (
+            <SearSymbolResult results={stockMatches} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
-
-      {/* Search result */}
-      {input && bestMatches.length > 0 ? (
-        <SearSymbolResult results={bestMatches} />
-      ) : (
-        ""
-      )}
     </>
   );
 }
