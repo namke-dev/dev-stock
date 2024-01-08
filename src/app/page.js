@@ -1,11 +1,9 @@
-import Dashboard from "@/component/dashboard/dashboard";
+import Dashboard from "@/components/dashboard";
 
 export default function Home() {
   return (
-    <>
-      [Home]
+    <main className="flex flex-col items-center px-4">
       <Dashboard />
-      [End Home]
-    </>
+    </main>
   );
 }
