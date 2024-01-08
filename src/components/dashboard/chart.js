@@ -1,7 +1,6 @@
 "use client";
 
-import { CHART_CONFIG } from "@/const/stock-option-const";
-import { mockHistorialData } from "@/mock/mock-data";
+import { CHART_FILTER } from "@/const/stock-option-const";
 import React, { useState } from "react";
 import {
   Area,
@@ -15,7 +14,7 @@ import {
 import ChartFilter from "./chart-filter";
 
 export default function Chart() {
-  const [chartData, setChartData] = useState(mockHistorialData);
+  const [chartData, setChartData] = useState(null);
   const [filter, setFilter] = useState("1M");
 
   function convertUnixTimestampToDate(date) {
@@ -23,7 +22,8 @@ export default function Chart() {
   }
 
   const formData = (data) => {
-    return data.c.map((item, index) => {
+    return;
+    data.c.map((item, index) => {
       return {
         value: item.toFixed(2),
         date: convertUnixTimestampToDate(data.t[index]),
@@ -41,7 +41,7 @@ export default function Chart() {
           justify-start
           md:justify-end"
         >
-          {Object.values(CHART_CONFIG).map((item) => {
+          {Object.values(CHART_FILTER).map((item) => {
             return (
               <li key={item}>
                 <ChartFilter
@@ -56,32 +56,6 @@ export default function Chart() {
           })}
         </ul>
       </div>
-      <ResponsiveContainer className="h-full w-full">
-        <AreaChart
-          data={formData(chartData)}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0.1} />
-            </linearGradient>
-          </defs>
-
-          <Area
-            type="monotone"
-            dataKey="value"
-            stroke="#312e81"
-            fillOpacity={1}
-            strokeWidth={0.5}
-            fill="url(#colorUv)"
-          />
-
-          <Tooltip />
-          <XAxis dataKey={"date"} />
-          <YAxis domain={["dataMin", "dataMax"]} />
-        </AreaChart>
-      </ResponsiveContainer>
     </div>
   );
 }

@@ -2,41 +2,48 @@ import React from "react";
 
 export default function CompanyDetail() {
   const detailListType = {
-    // symbol: "Symbol",
-    // type: "Type",
+    symbol: "Symbol",
+    name: "Name",
     // price: "Price",
-    previous_close: "Previous close",
-    change: "Change",
-    change_percent: "Change percent",
-    pre_or_post_market: "Pre/Post market",
-    pre_or_post_market_change: "Pre/Post market change",
-    pre_or_post_market_change_percent: "Pre/Post market change percent",
-    last_update_utc: "Last Update utc",
+    // company_country: "Country",
+    // company_state: "State",
+    // company_city: "City",
+    company_cdp_score: "CDP Score",
+    company_cdp_url: "CDP URL",
+    avg_volume: "Avg volume",
+    company_pe_ratio: "P/E ratio",
+    company_market_cap: "Market cap",
+    company_dividend_yield: "Dividend yield",
+    company_ceo: "CEO",
+    company_employees: "Num of employees",
+    company_founded_date: "Founded Date",
+    company_website: "Website",
+    company_street_address: "Address",
   };
 
   const financialListType = {
-    income_statement: "Company Income Statement",
-    balance_sheet: "Company Balance Sheet",
-    cash_flow: "Company Cash Flow",
+    income_statement: "Income statement",
+    balance_sheet: "Balance sheet",
+    cash_flow: "Cash flow",
   };
 
   return (
     <>
       <ul
         className="flex flex-col 
-        divide-y-2 
+        divide-y-0
         justify-between 
-        w-full h-full
+        w-full h-auto
         text-gray-600
-        px-5
-        py-2
+        px-2
+        py-0
         "
       >
         {Object.keys(detailListType).map((item) => {
           return (
             <li
               key={item}
-              className="flex-1 flex justify-between items-center py-2"
+              className="flex-1 flex justify-between items-center py-1 text-sm"
             >
               <span>{detailListType[item]}</span>
               <span>{"null"}</span>
@@ -48,7 +55,7 @@ export default function CompanyDetail() {
           return (
             <li
               key={item}
-              className="flex-1 flex justify-between items-center py-2"
+              className="flex-1 flex justify-between items-center py-1 text-sm"
             >
               <a href="/" className="text-blue-600 underline">
                 {financialListType[item]}

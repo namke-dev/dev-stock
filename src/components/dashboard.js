@@ -17,13 +17,13 @@ export default function Dashboard() {
       grid-row-10 md:grid-row-12
       auto-rows-fr
       gap-1 px-2 py-2
-      font-quicksand text-indigo-800 text-md"
+      font-quicksand text-gray-700 text-md"
     >
       {/* Option Bar */}
       <div
         className="
         col-span-1 md:col-span-3
-        row-span-2 md:row-span-1
+        row-span-1
         flex justify-center items-center"
       >
         <Cart>

@@ -34,16 +34,16 @@ export default function SearchBar() {
   return (
     <>
       <div className="flex flex-col md:flex-row px-2 md:items-center justify-center md:justify-start h-full w-full md:gap-4">
-        <p className="mb-1">Search symbol</p>
+        <p className="mb-1 text-base font-semibold">Search symbol</p>
         <div
           className="flex items-center
-        md:my-4 border-2
-        rounded-md
-        relative
-        z-50
-        w-full
-        max-w-[30rem]
-        h-10"
+          md:my-4 border-2
+          rounded-md
+          relative
+          z-50
+          w-full
+          max-w-[30rem]
+          h-10"
         >
           <input
             type="text"
@@ -63,13 +63,13 @@ export default function SearchBar() {
           {/* Clear button */}
           {input && (
             <button onClick={clear} className="m-1">
-              <FaTimes className="h-4 w-4 fill-gray-500" />
+              <FaTimes className="h-4 w-4 fill-gray-400" />
             </button>
           )}
 
           {/* Search button */}
           <button
-            className="h-8 w-14 bg-gray-500 rounded-sm flex justify-center items-center mx-[0.15rem]"
+            className="h-8 w-14 bg-gray-400 rounded-sm flex justify-center items-center mx-[0.15rem]"
             onClick={updateBestMatches}
           >
             <FaSearch className="h-4 w-4 fill-gray-50" />
