@@ -14,3 +14,13 @@ export const PAGE_FEATURE = {
   CURRENCIES_TIME_SERIES: "Currency time series",
   CURRENCIES_NEWS: "Currency News",
 };
+
+export const CHART_CONFIG = {
+  DAY: "1D",
+  DAYS_5: "5D",
+  MONTH: "1M",
+  MONTHS_5: "6M",
+  YEAR: "1Y",
+  YEARS_5: "5Y",
+  All_TIME: "MAX",
+};
