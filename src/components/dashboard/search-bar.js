@@ -3,15 +3,16 @@ import { FaSearch } from "react-icons/fa";
 
 export default function SearchBar() {
   return (
-    <div className="flex flex-row px-2 items-center h-full gap-4">
+    <div className="flex flex-col md:flex-row px-2 md:items-center justify-center md:justify-start h-full w-full md:gap-4">
       <p>Search</p>
       <div
         className="flex items-center
-        my-4 border-2
+        md:my-4 border-2
         rounded-md
         relative
         z-50
-        w-96
+        w-full
+        max-w-[30rem]
         h-10"
       >
         <input
