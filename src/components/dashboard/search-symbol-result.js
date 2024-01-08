@@ -8,10 +8,13 @@ export default function SearSymbolResult({ results }) {
 
   return (
     <ul
-      className={`absolute top-10 rounded-md 
-        h-auto  w-full
+      className={`absolute top-10 
+        h-auto max-h-64  w-full
         overflow-y-scroll 
-        border-2
+        border border-gray-300
+        rounded-md 
+        pl-1
+        py-1
         custom-scrollbar
         z-50
     ${
@@ -25,7 +28,7 @@ export default function SearSymbolResult({ results }) {
           return (
             <li
               key={item.symbol}
-              className={`cursor-pointer p-4 m-2 flex items-center justify-between rounded-md
+              className={`cursor-pointer p-4 m-1 flex items-center justify-between rounded-md
           ${darkMode ? "hover:bg-indigo-600" : "hover:bg-indigo-200"}`}
               onClick={() => {
                 console.log(item.symbol);
