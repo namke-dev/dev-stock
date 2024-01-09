@@ -7,13 +7,13 @@ export default function CompanyDetail() {
   );
   const detailListType = {
     // symbol: "Symbol",
-    // name: "Name",
+    name: "Name",
     // price: "Price",
     // company_country: "Country",
     // company_state: "State",
     // company_city: "City",
     company_cdp_score: "CDP Score",
-    company_cdp_url: "CDP URL",
+    // company_cdp_url: "CDP URL",
     avg_volume: "Avg volume",
     company_pe_ratio: "P/E ratio",
     company_market_cap: "Market cap",

@@ -13,18 +13,16 @@ export default function StockOverview() {
       px-2 gap-1
       "
     >
-      <div className="md:text-lg font-semibold">
-        {companyOverview.data.symbol}
+      <div className="md:text-lg">
+        <p>{companyOverview.data.symbol}</p>
+        <p>
+          {companyOverview.data.price}{" "}
+          <span className="font-extralight text-gray-600">
+            {companyOverview.data.currency}
+          </span>
+        </p>
       </div>
-      <span>{companyOverview.data.name}</span>
-      <p>
-        {companyOverview.data.company_city +
-          " " +
-          companyOverview.data.company_street_address}
-      </p>
-      <p className="">
-        $109.90 <span className="font-extralight text-gray-600">USD</span>
-      </p>
+      <p className="font-thin text-sm"> {companyOverview.data.name}</p>
     </div>
   );
 }
