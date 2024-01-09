@@ -17,7 +17,7 @@ export default function Dashboard() {
       {/* Dashboard container */}
       <div
         className="h-[84rem] md:h-[96.7vh] 
-      w-full max-w-[80rem]
+      w-full
       grid 
       grid-cols-1 md:grid-cols-3
       grid-row-10 md:grid-row-12
@@ -38,18 +38,6 @@ export default function Dashboard() {
             <SearchBar />
           </Cart>
         </div>
-
-        {/* Search bar */}
-        {/* <div
-          className="
-          col-span-1 md:col-span-3
-          row-span-1
-          flex justify-center items-center"
-        >
-          <Cart>
-            <SearchBar />
-          </Cart> 
-        </div>*/}
 
         {/* DashBoard chart */}
         <div
