@@ -49,9 +49,9 @@ export default function Dashboard() {
           className="col-span-1 md:col-span-2
         row-span-3 md:row-span-9"
         >
-          {/* <Cart> */}
-          <ChartCard />
-          {/* </Cart> */}
+          <Cart>
+            <ChartCard />
+          </Cart>
         </div>
 
         {/* Dashboard Company stock overview */}

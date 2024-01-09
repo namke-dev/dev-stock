@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body
         className={`
         ${inter.className} 
-        bg-gray-100
+        bg-gray-900
         text-gray-950
         relative
         overflow-y-auto
