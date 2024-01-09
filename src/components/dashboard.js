@@ -61,7 +61,7 @@ export default function Dashboard() {
       </div>
 
       {/* Dashboard Company Infor */}
-      <div className="row-span-4 md:row-span-7">
+      <div className="row-span-3 md:row-span-7">
         <Cart>
           <CompanyDetail />
         </Cart>

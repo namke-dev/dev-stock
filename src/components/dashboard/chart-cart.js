@@ -52,6 +52,8 @@ export default function ChartCard() {
           })}
         </ul>
       </div>
+
+      {/* Only render chart when all dom is loaded */}
       <div className="h-full w-full">{domLoaded && <CandleChart />}</div>
     </div>
   );
