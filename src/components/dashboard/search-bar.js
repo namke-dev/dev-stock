@@ -47,7 +47,7 @@ export default function SearchBar() {
         >
           <input
             type="text"
-            className="mx-3 focus:outline-0 flex flex-grow text-gray-900 bg-gray-100"
+            className="mx-3 focus:outline-0 flex flex-grow text-gray-900 bg-gray-50"
             placeholder="ex: google"
             value={input}
             onChange={(event) => {

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Cart from "./cart";
 import OptionBar from "./dashboard/option-bar";
 import SearchBar from "./dashboard/search-bar";
 import StockOverview from "./dashboard/stock-overview";
 import CompanyDetail from "./dashboard/company-detail";
 import ChartCard from "./dashboard/chart-cart";
+import TrendCard from "./dashboard/trend-card";
+import { mockMarketTrendResponse } from "@/mock/mock-data";
 
 export default function Dashboard() {
+  const [selectedTrend, setSelectedTrend] = useState(
+    mockMarketTrendResponse.data.trends
+  );
   return (
     <div className="flex justify-center items-center">
       {/* Dashboard container */}
@@ -49,9 +54,10 @@ export default function Dashboard() {
           className="col-span-1 md:col-span-2
         row-span-3 md:row-span-9"
         >
-          <Cart>
+          {/* <Cart>
             <ChartCard />
-          </Cart>
+          </Cart> */}
+          <TrendCard selectedTrend={selectedTrend} />
         </div>
 
         {/* Dashboard Company stock overview */}
