@@ -2,15 +2,6 @@
 
 import { CHART_FILTER } from "@/const/stock-option-const";
 import React, { useState } from "react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import ChartFilter from "./chart-filter";
 
 export default function Chart() {
