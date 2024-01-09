@@ -1,13 +1,17 @@
-"use client";
-
 import { CHART_FILTER } from "@/const/stock-option-const";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChartFilter from "./chart-filter";
-import ApexChart from "./apexchart";
+import CandleChart from "./candle-chart";
 
-export default function Chart() {
+export default function ChartCard() {
   const [chartData, setChartData] = useState(null);
   const [filter, setFilter] = useState("1M");
+
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
   function convertUnixTimestampToDate(date) {
     return new Date(date * 1000).toLocaleDateString();
@@ -24,7 +28,7 @@ export default function Chart() {
   };
 
   return (
-    <div className="h-[20rem] md:h-full w-full flex flex-col">
+    <div className="h-full w-full flex flex-col">
       <div>
         <ul
           className=" flex flex-row flex-wrap 
@@ -48,7 +52,7 @@ export default function Chart() {
           })}
         </ul>
       </div>
-      <ApexChart />
+      <div className="h-full w-full">{domLoaded && <CandleChart />}</div>
     </div>
   );
 }

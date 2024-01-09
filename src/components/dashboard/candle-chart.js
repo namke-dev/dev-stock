@@ -1,10 +1,14 @@
-import React, { Component } from "react";
-import Chart from "react-apexcharts";
+"use client";
 
-class App extends Component {
+import React, { Component } from "react";
+
+import dynamic from "next/dynamic";
+
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+
+class CandleChart extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       options: {
         chart: {
@@ -25,14 +29,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="mixed-chart">
+      <div className="mixed-chart h-full w-full">
         {typeof window !== "undefined" && (
           <Chart
             options={this.state.options}
             series={this.state.series}
             type="bar"
-            width="1000"
-            height="500"
+            width="100%"
+            height="100%"
           />
         )}
       </div>
@@ -40,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default CandleChart;
