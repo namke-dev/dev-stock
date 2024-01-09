@@ -8,7 +8,7 @@ export default function TrendCard({ selectedTrend }) {
       bg-white h-full w-full rounded-md py-1 border border-neutral-300
       overflow-y-auto custom-scrollbar"
     >
-      <div className="flex gap-3 justify-between px-5 pb-2">
+      <div className="flex gap-3 justify-between px-5 pb-2 text-sm">
         <p className="flex-1">Symbol</p>
         <p className="flex-1">Exchange</p>
         <p className="flex-1 text-right">Price</p>
