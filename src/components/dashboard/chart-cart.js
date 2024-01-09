@@ -54,7 +54,7 @@ export default function ChartCard() {
       </div>
 
       {/* Only render chart when all dom is loaded */}
-      <div className="h-full w-full">{domLoaded && <CandleChart />}</div>
+      <div className="h-full w-full py-3">{domLoaded && <CandleChart />}</div>
     </div>
   );
 }

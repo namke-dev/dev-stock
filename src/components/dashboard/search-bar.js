@@ -42,7 +42,7 @@ export default function SearchBar() {
           relative
           z-50
           w-full
-          max-w-[30rem]
+          md:max-w-[30rem]
           h-10"
         >
           <input
