@@ -13,6 +13,14 @@ export default function StockOverview() {
       px-2 gap-1
       "
     >
+      <p className="md:text-lg font-semibold">{companyOverview.data.symbol}</p>
+      <p className="text-green-500 text-lg">
+        {companyOverview.data.price}{" "}
+        <span className="font-extralight text-gray-400">
+          {companyOverview.data.currency}
+        </span>
+      </p>
+
       <a
         className="font-thin text-sm text-blue-600"
         href={companyOverview.data.company_website}
@@ -25,15 +33,8 @@ export default function StockOverview() {
         href={companyOverview.data.company_cdp_url}
         target="_blank"
       >
-        CDP Score: {companyOverview.data.company_cdp_score}
+        CDP: {companyOverview.data.company_cdp_score}
       </a>
-      <p className="md:text-lg font-semibold">{companyOverview.data.symbol}</p>
-      <p className="text-green-500 text-lg">
-        {companyOverview.data.price}{" "}
-        <span className="font-extralight text-gray-400">
-          {companyOverview.data.currency}
-        </span>
-      </p>
     </div>
   );
 }
