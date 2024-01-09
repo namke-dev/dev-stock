@@ -27,7 +27,7 @@ export default function SearchBar() {
       }
     } catch (error) {
       setStockMatches([]);
-      console.log(error);
+      console.log("Search bar" + error);
     }
   };
 

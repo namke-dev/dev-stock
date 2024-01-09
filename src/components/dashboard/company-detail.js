@@ -1,6 +1,10 @@
-import React from "react";
+import { mockCompanyOverviewResponse } from "@/mock/mock-data";
+import React, { useState } from "react";
 
 export default function CompanyDetail() {
+  const [companyOverview, setCompanyOverview] = useState(
+    mockCompanyOverviewResponse
+  );
   const detailListType = {
     // symbol: "Symbol",
     // name: "Name",
@@ -46,7 +50,7 @@ export default function CompanyDetail() {
               className="flex-1 flex justify-between items-center py-1 text-sm"
             >
               <span>{detailListType[item]}</span>
-              <span>{"null"}</span>
+              <span>{companyOverview.data[item]}</span>
             </li>
           );
         })}
