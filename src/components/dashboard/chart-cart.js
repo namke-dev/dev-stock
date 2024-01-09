@@ -6,7 +6,6 @@ import CandleChart from "./candle-chart";
 export default function ChartCard() {
   const [chartData, setChartData] = useState(null);
   const [filter, setFilter] = useState("1M");
-
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
