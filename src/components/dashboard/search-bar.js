@@ -37,7 +37,7 @@ export default function SearchBar() {
         <p className="mb-1 text-base font-semibold">Search symbol</p>
         <div
           className="flex items-center
-          md:my-4 border-2
+          md:my-4 border-2 border-indigo-200
           rounded-md
           relative
           z-50
@@ -69,7 +69,7 @@ export default function SearchBar() {
 
           {/* Search button */}
           <button
-            className="h-8 w-14 bg-gray-400 rounded-sm flex justify-center items-center mx-[0.15rem]"
+            className="h-8 w-14 bg-indigo-400 rounded-sm flex justify-center items-center mx-[0.15rem]"
             onClick={updateBestMatches}
           >
             <FaSearch className="h-4 w-4 fill-gray-50" />

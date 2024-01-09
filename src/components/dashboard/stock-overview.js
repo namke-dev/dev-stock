@@ -13,9 +13,20 @@ export default function StockOverview() {
       px-2 gap-1
       "
     >
-      <p className="font-thin text-sm text-gray-600">
+      <a
+        className="font-thin text-sm text-blue-600"
+        href={companyOverview.data.company_website}
+        target="_blank"
+      >
         {companyOverview.data.name}
-      </p>
+      </a>
+      <a
+        className="font-thin text-sm text-blue-600"
+        href={companyOverview.data.company_cdp_url}
+        target="_blank"
+      >
+        CDP Score: {companyOverview.data.company_cdp_score}
+      </a>
       <p className="md:text-lg font-semibold">{companyOverview.data.symbol}</p>
       <p className="text-green-500 text-lg">
         {companyOverview.data.price}{" "}

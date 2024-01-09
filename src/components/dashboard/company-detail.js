@@ -6,23 +6,22 @@ export default function CompanyDetail() {
     mockCompanyOverviewResponse
   );
   const detailListType = {
-    // symbol: "Symbol",
-    name: "Name",
-    // price: "Price",
-    // company_country: "Country",
-    // company_state: "State",
-    // company_city: "City",
-    company_cdp_score: "CDP Score",
-    // company_cdp_url: "CDP URL",
+    year_low: "Year low",
+    year_high: "Year high",
+    previous_close: "Previous close",
+    volume: "Volume",
+    primary_exchange: "Primary exchange",
+    last_update_utc: "Last update",
     avg_volume: "Avg volume",
     company_pe_ratio: "P/E ratio",
     company_market_cap: "Market cap",
     company_dividend_yield: "Dividend yield",
+
     company_ceo: "CEO",
-    company_employees: "Num of employees",
+    // company_employees: "Num of employees",
     company_founded_date: "Founded Date",
-    company_website: "Website",
-    company_street_address: "Address",
+    // company_city: "City",
+    // company_street_address: "Address",
   };
 
   const financialListType = {
