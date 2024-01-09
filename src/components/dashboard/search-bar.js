@@ -33,11 +33,11 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row px-2 md:items-center justify-center md:justify-start h-full w-full md:gap-4">
-        <p className="mb-1 text-base font-semibold">Search symbol</p>
+      <div className="flex flex-col md:flex-row px-2 justify-start h-1/2 w-full md:gap-4">
+        <p className="mb-1 text-sm font-semibold md:mt-2">Search symbol</p>
         <div
           className="flex items-center
-          md:my-4 border-2 border-indigo-200
+          border-2 border-indigo-200
           rounded-md
           relative
           z-50

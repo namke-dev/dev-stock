@@ -4,7 +4,7 @@ import React from "react";
 export default function OptionBar() {
   return (
     <div
-      className="flex flex-col items-start justify-center h-full px-2 gap-1
+      className="flex flex-col items-start justify-center h-1/2 px-2 gap-1
       text-sm md:text-base"
     >
       <div className="flex flex-col md:flex-row w-full mb-2 md:mb-0 md:items-center">
@@ -12,7 +12,8 @@ export default function OptionBar() {
           className="flex justify-start 
           mt-2 mb-1 md:m-0
           font-semibold
-          pb-1"
+          pb-1
+          text-sm"
         >
           Market trend
         </p>

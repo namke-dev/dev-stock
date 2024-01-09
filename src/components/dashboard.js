@@ -28,26 +28,28 @@ export default function Dashboard() {
         {/* Option Bar */}
         <div
           className="
-        col-span-1 md:col-span-3
-        row-span-1
-        flex justify-center items-center"
+          col-span-1 md:col-span-3
+          row-span-1 md:row-span-2
+          flex flex-col justify-center items-center
+          "
         >
           <Cart>
             <OptionBar />
+            <SearchBar />
           </Cart>
         </div>
 
         {/* Search bar */}
-        <div
+        {/* <div
           className="
-        col-span-1 md:col-span-3
-        row-span-1
-        flex justify-center items-center"
+          col-span-1 md:col-span-3
+          row-span-1
+          flex justify-center items-center"
         >
           <Cart>
             <SearchBar />
-          </Cart>
-        </div>
+          </Cart> 
+        </div>*/}
 
         {/* DashBoard chart */}
         <div

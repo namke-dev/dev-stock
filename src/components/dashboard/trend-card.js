@@ -5,7 +5,7 @@ export default function TrendCard({ selectedTrend }) {
   return (
     <div
       className="
-      bg-gray-50 h-full w-full rounded-md py-1 border border-neutral-300
+      bg-white h-full w-full rounded-md py-1 border border-neutral-300
       overflow-y-auto custom-scrollbar"
     >
       <div className="flex gap-3 justify-between px-5 pb-2">
