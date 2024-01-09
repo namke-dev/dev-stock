@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer>
-      <div className="flex flex-col px-14 py-5 mt-6 bg-black text-white text-sm">
+      <div className="flex flex-col px-5 md:px-14 py-5 mt-6 bg-black text-white text-sm">
         <p>Dev stock - realtime trading stock</p>
         <p>
           Feature: check company realtime, historycal data, and financial data
