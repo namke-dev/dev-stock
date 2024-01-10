@@ -8,14 +8,14 @@ import ChartCard from "./dashboard/chart-cart";
 import TrendCard from "./dashboard/trend-card";
 import { mockMarketTrendResponse } from "@/mock/mock-data";
 import Tabs from "./tabs";
-import { timeSeriesDaily } from "@/mock/mock-time-series";
+import { mockTimeSeriesDaily } from "@/mock/mock-time-series";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(
     mockMarketTrendResponse.data.trends
   );
   const [chartData, setChartData] = useState(
-    timeSeriesDaily["Time Series (Daily)"]
+    mockTimeSeriesDaily["Time Series (Daily)"]
   );
 
   const tabs = [

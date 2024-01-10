@@ -5,7 +5,7 @@
 //   datatype: 'json'
 // },
 
-export const timeSeriesInTradeDay = {
+export const mockTimeSeriesInTradeDay = {
   "Meta Data": {
     "1. Information":
       "Intraday (60min) open, high, low, close prices and volume",
@@ -719,7 +719,7 @@ export const timeSeriesInTradeDay = {
   },
 };
 
-export const timeSeriesDaily = {
+export const mockTimeSeriesDaily = {
   "Meta Data": {
     "1. Information": "Daily Prices (open, high, low, close) and Volumes",
     "2. Symbol": "GOOGL",
@@ -1431,6 +1431,6 @@ export const timeSeriesDaily = {
   },
 };
 
-export const timeSeriesWeekly = {};
+export const mockTimeSeriesWeekly = {};
 
-export const timeSeriesMonthly = {};
+export const mockTimeSeriesMonthly = {};
