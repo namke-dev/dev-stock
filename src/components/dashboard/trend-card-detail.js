@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TrendCardCompany({ stockDetail }) {
+export default function TrendCardDetail({ stockDetail }) {
   return (
     <div
       className="flex gap-3 justify-between px-5

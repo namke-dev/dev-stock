@@ -16,7 +16,6 @@ export default function SearchBar() {
   };
 
   const updateBestMatches = async () => {
-    console.log("updateBestMatches");
     try {
       if (input) {
         // const url = `search?query=${input}`;
@@ -27,7 +26,6 @@ export default function SearchBar() {
       }
     } catch (error) {
       setStockMatches([]);
-      console.log("Search bar" + error);
     }
   };
 

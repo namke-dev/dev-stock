@@ -1,5 +1,5 @@
 import React from "react";
-import TrendCardCompany from "./trend-card-company";
+import TrendCardDetail from "./trend-card-detail";
 
 export default function TrendCard({ selectedTrend }) {
   return (
@@ -18,10 +18,9 @@ export default function TrendCard({ selectedTrend }) {
 
       <div className="divide-y-2">
         {selectedTrend.map((item) => {
-          console.log(item);
           return (
             <div key={item.symbol}>
-              <TrendCardCompany stockDetail={item} />
+              <TrendCardDetail stockDetail={item} />
             </div>
           );
         })}
