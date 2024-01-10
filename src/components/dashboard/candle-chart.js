@@ -4,7 +4,12 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const CandleChart = ({ chartData }) => {
-  const [chartOptions, setChartOptions] = useState([]);
+  const [chartOptions, setChartOptions] = useState({});
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  console.log("chartData");
+  console.log(chartData);
+  if (!chartData) return;
 
   useEffect(() => {
     const formatedData = Object.entries(chartData).map(([date, values]) => ({
@@ -16,6 +21,13 @@ const CandleChart = ({ chartData }) => {
         parseFloat(values["4. close"]),
       ],
     }));
+
+    const formatedVolumeData = Object.entries(chartData).map(
+      ([date, values]) => ({
+        x: new Date(date).getTime(),
+        y: parseFloat(values["6. volume"]),
+      })
+    );
 
     setChartOptions({
       series: [
@@ -35,26 +47,13 @@ const CandleChart = ({ chartData }) => {
           enabled: true,
         },
       },
-      zoom: {
-        enabled: true,
-        type: "x",
-        resetIcon: {
-          offsetX: -10,
-          offsetY: 0,
-          fillColor: "#fff",
-          strokeColor: "#37474F",
-        },
-        selection: {
-          background: "#90CAF9",
-          border: "#0D47A1",
-        },
-      },
     });
-  }, []);
+    setDomLoaded(true);
+  }, [chartData]);
 
   return (
     <div className="mixed-chart h-full w-full">
-      {typeof window !== "undefined" && (
+      {typeof window !== "undefined" && domLoaded && (
         <Chart
           options={chartOptions}
           series={chartOptions.series}

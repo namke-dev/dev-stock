@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cart from "./cart";
 import OptionBar from "./dashboard/option-bar";
 import SearchBar from "./dashboard/search-bar";
@@ -8,20 +8,21 @@ import ChartCard from "./dashboard/chart-cart";
 import TrendCard from "./dashboard/trend-card";
 import { mockMarketTrendResponse } from "@/mock/mock-data";
 import Tabs from "./tabs";
-import { mockTimeSeriesDaily } from "@/mock/mock-time-series";
+import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
 
 export default function Dashboard() {
-  const [selectedTrend, setSelectedTrend] = useState(
-    mockMarketTrendResponse.data.trends
-  );
-  const [chartData, setChartData] = useState(
-    mockTimeSeriesDaily["Time Series (Daily)"]
-  );
+  const [selectedTrend, setSelectedTrend] = useState(null);
+  const [chartData, setChartData] = useState(null);
 
   const tabs = [
     { name: "Chart", content: <ChartCard chartData={chartData} /> },
     { name: "Trend", content: <TrendCard selectedTrend={selectedTrend} /> },
   ];
+
+  useEffect(() => {
+    setSelectedTrend(mockMarketTrendResponse.data.trends);
+    setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
+  }, []);
 
   return (
     <div className="flex justify-center items-center">
