@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { timeSeriesDaily } from "@/mock/mock-time-series";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const CandleChart = () => {
+const CandleChart = ({ chartData }) => {
   const [chartOptions, setChartOptions] = useState([]);
 
   useEffect(() => {
-    const formatedData = Object.entries(
-      timeSeriesDaily["Time Series (Daily)"]
-    ).map(([date, values]) => ({
+    const formatedData = Object.entries(chartData).map(([date, values]) => ({
       x: new Date(date).getTime(),
       y: [
         parseFloat(values["1. open"]),

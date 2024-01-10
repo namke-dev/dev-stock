@@ -3,10 +3,7 @@ import TrendCardDetail from "./trend-card-detail";
 
 export default function TrendCard({ selectedTrend }) {
   return (
-    <div
-      className="
-      bg-white h-full w-full rounded-md py-1 border border-neutral-300"
-    >
+    <div className="h-full w-full">
       <div className="flex gap-3 justify-between px-5 pb-2 text-sm font-semibold">
         <p className="flex-1">Symbol</p>
         <p className="flex-1">Exchange</p>

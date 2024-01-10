@@ -7,11 +7,22 @@ import CompanyDetail from "./dashboard/company-detail";
 import ChartCard from "./dashboard/chart-cart";
 import TrendCard from "./dashboard/trend-card";
 import { mockMarketTrendResponse } from "@/mock/mock-data";
+import Tabs from "./tabs";
+import { timeSeriesDaily } from "@/mock/mock-time-series";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(
     mockMarketTrendResponse.data.trends
   );
+  const [chartData, setChartData] = useState(
+    timeSeriesDaily["Time Series (Daily)"]
+  );
+
+  const tabs = [
+    { name: "Chart", content: <ChartCard chartData={chartData} /> },
+    { name: "Trend", content: <TrendCard selectedTrend={selectedTrend} /> },
+  ];
+
   return (
     <div className="flex justify-center items-center">
       {/* Dashboard container */}
@@ -47,7 +58,10 @@ export default function Dashboard() {
           {/* <Cart>
             <ChartCard />
           </Cart> */}
-          <TrendCard selectedTrend={selectedTrend} />
+          {/* <TrendCard selectedTrend={selectedTrend} /> */}
+          <Cart>
+            <Tabs tabs={tabs} />
+          </Cart>
         </div>
 
         {/* Dashboard Company stock overview */}

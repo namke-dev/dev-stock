@@ -3,28 +3,13 @@ import React, { useEffect, useState } from "react";
 import ChartFilter from "./chart-filter";
 import CandleChart from "./candle-chart";
 
-export default function ChartCard() {
-  const [chartData, setChartData] = useState(null);
+export default function ChartCard({ chartData }) {
   const [filter, setFilter] = useState("1M");
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
     setDomLoaded(true);
   }, []);
-
-  function convertUnixTimestampToDate(date) {
-    return new Date(date * 1000).toLocaleDateString();
-  }
-
-  const formData = (data) => {
-    return;
-    data.c.map((item, index) => {
-      return {
-        value: item.toFixed(2),
-        date: convertUnixTimestampToDate(data.t[index]),
-      };
-    });
-  };
 
   return (
     <div className="h-full w-full flex flex-col">
@@ -53,7 +38,9 @@ export default function ChartCard() {
       </div>
 
       {/* Only render chart when all dom is loaded */}
-      <div className="h-full w-full py-3">{domLoaded && <CandleChart />}</div>
+      <div className="h-full w-full py-3">
+        {domLoaded && <CandleChart chartData={chartData} />}
+      </div>
     </div>
   );
 }
