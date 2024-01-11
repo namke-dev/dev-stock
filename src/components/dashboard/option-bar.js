@@ -22,7 +22,7 @@ export default function OptionBar() {
             return (
               <li
                 key={option}
-                className="rounded-md px-2 
+                className="rounded-md px-2 text-sm
                 border border-black/30 dark:border-neutral-600
                 hover:text-gray-50 hover:bg-gray-600 
                 cursor-pointer"

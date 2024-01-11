@@ -8,7 +8,7 @@ export default function TrendCard({ selectedTrend }) {
   }, []);
 
   return (
-    <div className="h-full w-full">
+    <div className="h-[75%] md:h-[85%] w-full">
       <div className="flex gap-3 justify-between px-5 pb-2 text-sm font-semibold">
         <p className="flex-1">Symbol</p>
         <p className="flex-1">Exchange</p>
@@ -19,7 +19,7 @@ export default function TrendCard({ selectedTrend }) {
 
       <div
         className="divide-y-2 dark:divide-gray-500
-        h-[95%] overflow-y-auto custom-scrollbar"
+        h-full overflow-y-auto custom-scrollbar"
       >
         {domLoaded &&
           selectedTrend.map((item) => {
