@@ -40,7 +40,7 @@ export default function IncomeStatementChart({ chartData }) {
           },
           toolbar: {
             autoSelected: "pan",
-            show: true,
+            show: false,
           },
           zoom: {
             enabled: true,
@@ -52,6 +52,12 @@ export default function IncomeStatementChart({ chartData }) {
           enabled: true,
           formatter: function (value) {
             return formatAxisLabel(value, 0);
+          },
+          highlightDataSeries: true,
+          background: {
+            enabled: true,
+            borderColor: lightThemelineColors,
+            opacity: 0.8,
           },
         },
         stroke: {
@@ -69,14 +75,9 @@ export default function IncomeStatementChart({ chartData }) {
         },
         xaxis: {
           categories: chartData.map((data) => data.year.toString()).reverse(),
-          title: {
-            style: {
-              color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
-            },
-          },
           labels: {
             style: {
-              colors: darkMode ? "#ffffff" : "#000000", // Adjust label color for dark mode
+              colors: darkMode ? "#999999" : "#222222", // Adjust label color for dark mode
             },
           },
         },
@@ -84,7 +85,7 @@ export default function IncomeStatementChart({ chartData }) {
           title: {
             text: "Value (USD)",
             style: {
-              color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
+              color: darkMode ? "#999999" : "#222222", // Adjust text color for dark mode
             },
           },
           labels: {
@@ -92,7 +93,7 @@ export default function IncomeStatementChart({ chartData }) {
               return formatAxisLabel(value);
             },
             style: {
-              colors: darkMode ? "#ffffff" : "#000000", // Adjust label color for dark mode
+              colors: darkMode ? "#999999" : "#222222", // Adjust label color for dark mode
             },
           },
         },
@@ -101,7 +102,7 @@ export default function IncomeStatementChart({ chartData }) {
           position: "top",
           horizontalAlign: "left",
           labels: {
-            colors: darkMode ? "#ffffff" : "#000000", // Adjust legend label color for dark mode
+            colors: darkMode ? "#999999" : "#222222", // Adjust legend label color for dark mode
           },
         },
         animations: {

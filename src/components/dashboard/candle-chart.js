@@ -67,7 +67,7 @@ const CandleChart = ({ chartData }) => {
           id: "candles",
           toolbar: {
             autoSelected: "pan",
-            show: true,
+            show: false,
           },
         },
         legend: {
@@ -92,6 +92,9 @@ const CandleChart = ({ chartData }) => {
         yaxis: {
           title: {
             text: "Price (USD)",
+            style: {
+              color: darkMode ? "#999999" : "#222222", // Adjust text color for dark mode
+            },
           },
           labels: {
             formatter: function (value) {
@@ -168,6 +171,9 @@ const CandleChart = ({ chartData }) => {
         yaxis: {
           title: {
             text: "Volumne",
+            style: {
+              color: darkMode ? "#999999" : "#222222", // Adjust text color for dark mode
+            },
           },
           labels: {
             formatter: function (value) {
