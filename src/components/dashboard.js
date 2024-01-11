@@ -5,7 +5,10 @@ import StockOverview from "./dashboard/stock-overview";
 import CompanyDetail from "./dashboard/company-detail";
 import ChartCard from "./dashboard/chart-cart";
 import TrendCard from "./dashboard/trend-card";
-import { mockMarketTrendResponse } from "@/mock/mock-data";
+import {
+  mockCompanyIncomeStatementResponse,
+  mockMarketTrendResponse,
+} from "@/mock/mock-data";
 import Tabs from "./tabs";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
 import MultiLineChart from "./dashboard/multi-line-chart";
@@ -13,32 +16,36 @@ import MultiLineChart from "./dashboard/multi-line-chart";
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
   const [chartData, setChartData] = useState(null);
+  const [multiLineChartData, setMultiLineChartData] = useState(null);
   const chartTabs = [
     { name: "TIME SERIES", content: <ChartCard chartData={chartData} /> },
     {
       name: "INCOME STATEMENT",
-      content: <MultiLineChart chartData={chartData} />,
+      content: <MultiLineChart chartData={multiLineChartData} />,
     },
-    { name: "BALANCE SHEET", content: <ChartCard chartData={chartData} /> },
-    { name: "CASH FLOW", content: <ChartCard chartData={chartData} /> },
+    // { name: "BALANCE SHEET", content: <ChartCard chartData={chartData} /> },
+    // { name: "CASH FLOW", content: <ChartCard chartData={chartData} /> },
   ];
 
   const trendTabs = [
     { name: "GAINERS", content: <TrendCard selectedTrend={selectedTrend} /> },
-    { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
-    {
-      name: "MARKET INDEXES",
-      content: <TrendCard selectedTrend={selectedTrend} />,
-    },
-    {
-      name: "MOST ACTIVE",
-      content: <TrendCard selectedTrend={selectedTrend} />,
-    },
+    // { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
+    // {
+    //   name: "MARKET INDEXES",
+    //   content: <TrendCard selectedTrend={selectedTrend} />,
+    // },
+    // {
+    //   name: "MOST ACTIVE",
+    //   content: <TrendCard selectedTrend={selectedTrend} />,
+    // },
   ];
 
   useEffect(() => {
     setSelectedTrend(mockMarketTrendResponse.data.trends);
     setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
+    setMultiLineChartData(
+      mockCompanyIncomeStatementResponse.data.income_statement
+    );
   }, []);
 
   return (

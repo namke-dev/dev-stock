@@ -11,26 +11,26 @@ export default function MultiLineChart({ chartData }) {
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
-    const darkThemeColors = ["#77B6EA", "#00CC00", "#888888"]; // Adjust these colors for the dark theme
-    const lightThemeColors = ["#77B6EA", "#00CC00", "#888888"];
-
-    const colorPalette = darkMode ? darkThemeColors : lightThemeColors;
+    const darkThemelineColors = ["#77B6EA", "#00CC00", "#888888"];
+    const lightThemelineColors = ["#77B6EA", "#00CC00", "#888888"];
+    const colorPalette = darkMode ? darkThemelineColors : lightThemelineColors;
+    const seriesData = [
+      {
+        name: "Revenue",
+        data: chartData.map((data) => data.revenue),
+      },
+      {
+        name: "Operating Expense",
+        data: chartData.map((data) => data.operating_expense),
+      },
+      {
+        name: "Net Income",
+        data: chartData.map((data) => data.net_income),
+      },
+    ];
 
     setChartOptions({
-      series: [
-        {
-          name: "High - 2013",
-          data: [28, 29, 33, 36, 32, 32, 33],
-        },
-        {
-          name: "Low - 2013",
-          data: [12, 11, 14, 18, 17, 13, 13],
-        },
-        {
-          name: "Avg - 2014",
-          data: [2, 4, 24, 38, 7, 3, 19],
-        },
-      ],
+      series: seriesData,
       options: {
         chart: {
           height: 350,
@@ -65,7 +65,7 @@ export default function MultiLineChart({ chartData }) {
           size: 1,
         },
         xaxis: {
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          categories: chartData.map((data) => data.year.toString()),
           title: {
             text: "Month",
             style: {
