@@ -14,10 +14,6 @@ export default function ChartCard({ chartData }) {
   return (
     <div className="h-full w-full flex flex-col">
       <div className="flex flex-row w-full h-auto text-lg font-semibold justify-between items-center pl-2">
-        {/* symbol name */}
-        <div className="h1 dark:text-white/90">
-          {domLoaded && chartData ? "AAPL" : "Nothing"}
-        </div>
         {/* chart option filter */}
         <ul
           className=" flex flex-row flex-wrap 

@@ -17,6 +17,7 @@ import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
+
   const [chartData, setChartData] = useState(null);
   const [incomeStatementChartData, setIncomeStatementChartData] =
     useState(null);
@@ -104,6 +105,10 @@ export default function Dashboard() {
         row-span-5 md:row-span-9"
         >
           <Cart>
+            {/* symbol name */}
+            {/* <div className="h1 dark:text-white/90">
+              {domLoaded && chartData ? "AAPL" : "Nothing"}
+            </div> */}
             <Tabs tabs={chartTabs} />
           </Cart>
         </div>
