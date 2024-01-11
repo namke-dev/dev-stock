@@ -105,10 +105,6 @@ export default function Dashboard() {
         row-span-5 md:row-span-9"
         >
           <Cart>
-            {/* symbol name */}
-            {/* <div className="h1 dark:text-white/90">
-              {domLoaded && chartData ? "AAPL" : "Nothing"}
-            </div> */}
             <Tabs tabs={chartTabs} />
           </Cart>
         </div>
