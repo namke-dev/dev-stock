@@ -27,6 +27,12 @@ const CandleChart = ({ chartData }) => {
         y: parseFloat(values["6. volume"]),
       })
     );
+    const lastDate = new Date(Object.keys(chartData)[0]);
+    const firstDate = new Date(
+      Object.keys(chartData)[Object.keys(chartData).length - 1]
+    );
+    console.log("lastDate: " + lastDate);
+    console.log("firstDate: " + firstDate);
 
     setChartOptions({
       series: [
@@ -87,8 +93,8 @@ const CandleChart = ({ chartData }) => {
           selection: {
             enabled: true,
             xaxis: {
-              min: new Date("1 Jan 2023").getTime(),
-              max: new Date("10 Jan 2023").getTime(),
+              min: firstDate.getTime(),
+              max: lastDate.getTime(),
             },
             fill: {
               color: "#ccc",
@@ -119,7 +125,7 @@ const CandleChart = ({ chartData }) => {
         },
         yaxis: {
           labels: {
-            show: false,
+            show: true,
           },
         },
       },
