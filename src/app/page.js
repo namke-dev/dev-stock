@@ -13,13 +13,15 @@ export default function Home() {
   const [stockSymbol, setStockSymbol] = useState("AAPL:NASDAQ");
 
   return (
-    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-      <StockContext.Provider value={{ stockSymbol, setStockSymbol }}>
-        <Header />
-        <Dashboard />
-        <ThemeSwitch />
-        <Footer />
-      </StockContext.Provider>
-    </ThemeContext.Provider>
+    <main className="flex flex-col items-center">
+      <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+        <StockContext.Provider value={{ stockSymbol, setStockSymbol }}>
+          <Header />
+          <Dashboard />
+          <ThemeSwitch />
+          <Footer />
+        </StockContext.Provider>
+      </ThemeContext.Provider>
+    </main>
   );
 }

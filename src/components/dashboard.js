@@ -43,7 +43,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center w-full">
       {/* Dashboard container */}
       <div
         className="md:h-[70rem] h-[110rem]
@@ -52,7 +52,7 @@ export default function Dashboard() {
       grid-cols-1 md:grid-cols-4
       grid-rows-12
       auto-rows-fr
-      gap-1 px-2 py-2
+      gap-1 px-2 py-5
       font-quicksand text-gray-700 text-md
       "
       >

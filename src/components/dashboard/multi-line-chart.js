@@ -11,6 +11,11 @@ export default function MultiLineChart({ chartData }) {
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
+    const darkThemeColors = ["#77B6EA", "#00CC00", "#888888"]; // Adjust these colors for the dark theme
+    const lightThemeColors = ["#77B6EA", "#00CC00", "#888888"];
+
+    const colorPalette = darkMode ? darkThemeColors : lightThemeColors;
+
     setChartOptions({
       series: [
         {
@@ -21,13 +26,20 @@ export default function MultiLineChart({ chartData }) {
           name: "Low - 2013",
           data: [12, 11, 14, 18, 17, 13, 13],
         },
+        {
+          name: "Avg - 2014",
+          data: [2, 4, 24, 38, 7, 3, 19],
+        },
       ],
       options: {
         chart: {
           height: 350,
           type: "line",
+          animations: {
+            enabled: false,
+          },
         },
-        colors: ["#77B6EA", "#545454"],
+        colors: colorPalette,
         dataLabels: {
           enabled: true,
         },
@@ -37,11 +49,14 @@ export default function MultiLineChart({ chartData }) {
         title: {
           text: "Average High & Low Temperature",
           align: "left",
+          style: {
+            color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
+          },
         },
         grid: {
-          borderColor: "#e7e7e7",
+          borderColor: darkMode ? "#555555" : "#e7e7e7",
           row: {
-            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+            colors: [darkMode ? "#555555" : "#f3f3f3", "transparent"],
             opacity: 0.3,
           },
         },
@@ -52,14 +67,30 @@ export default function MultiLineChart({ chartData }) {
           categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
           title: {
             text: "Month",
+            style: {
+              color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
+            },
+          },
+          labels: {
+            style: {
+              colors: darkMode ? "#ffffff" : "#000000", // Adjust label color for dark mode
+            },
           },
         },
         yaxis: {
           title: {
             text: "Temperature",
+            style: {
+              color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
+            },
           },
-          min: 5,
-          max: 40,
+          // min: 5,
+          // max: 40,
+          labels: {
+            style: {
+              colors: darkMode ? "#ffffff" : "#000000", // Adjust label color for dark mode
+            },
+          },
         },
         legend: {
           position: "top",
@@ -67,6 +98,15 @@ export default function MultiLineChart({ chartData }) {
           floating: true,
           offsetY: -25,
           offsetX: -5,
+          labels: {
+            colors: darkMode ? "#ffffff" : "#000000", // Adjust legend label color for dark mode
+          },
+        },
+        animations: {
+          enabled: false,
+        },
+        tooltip: {
+          enabled: true, // Tooltips will show information about each series when hovering
         },
       },
     });
