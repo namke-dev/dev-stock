@@ -38,8 +38,6 @@ const CandleChart = ({ chartData }) => {
       }
     );
 
-    console.log(formatedVolumeData);
-
     function formatAxisLabel(value) {
       const absValue = Math.abs(value);
 
