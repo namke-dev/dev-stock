@@ -6,25 +6,32 @@ import CompanyDetail from "./dashboard/company-detail";
 import ChartCard from "./dashboard/chart-cart";
 import TrendCard from "./dashboard/trend-card";
 import {
+  mockCompanyBalanceSheetResponse,
   mockCompanyIncomeStatementResponse,
   mockMarketTrendResponse,
 } from "@/mock/mock-data";
 import Tabs from "./tabs";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
-import MultiLineChart from "./dashboard/multi-line-chart";
+import IncomeStatementChart from "./dashboard/income-statement-chart";
+import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
   const [chartData, setChartData] = useState(null);
-  const [multiLineChartData, setMultiLineChartData] = useState(null);
+  const [incomeStatementChartData, setIncomeStatementChartData] =
+    useState(null);
+  const [balanceSheetChartData, setBalanceSheetChartData] = useState(null);
+
   const chartTabs = [
     { name: "TIME SERIES", content: <ChartCard chartData={chartData} /> },
     {
       name: "INCOME STATEMENT",
-      content: <MultiLineChart chartData={multiLineChartData} />,
+      content: <IncomeStatementChart chartData={incomeStatementChartData} />,
     },
-    // { name: "BALANCE SHEET", content: <ChartCard chartData={chartData} /> },
-    // { name: "CASH FLOW", content: <ChartCard chartData={chartData} /> },
+    {
+      name: "BALANCE SHEET",
+      content: <BalanceSheetChart chartData={balanceSheetChartData} />,
+    },
   ];
 
   const trendTabs = [
@@ -43,8 +50,11 @@ export default function Dashboard() {
   useEffect(() => {
     setSelectedTrend(mockMarketTrendResponse.data.trends);
     setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
-    setMultiLineChartData(
+    setIncomeStatementChartData(
       mockCompanyIncomeStatementResponse.data.income_statement
+    );
+    setBalanceSheetChartData(
+      mockCompanyBalanceSheetResponse.data.balance_sheet
     );
   }, []);
 
