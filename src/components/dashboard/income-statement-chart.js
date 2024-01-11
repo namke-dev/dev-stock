@@ -47,10 +47,13 @@ export default function IncomeStatementChart({ chartData }) {
             type: "x",
           },
         },
-        legend: {
-          show: true,
-        },
         colors: colorPalette,
+        dataLabels: {
+          enabled: true,
+          formatter: function (value) {
+            return formatAxisLabel(value, 0);
+          },
+        },
         stroke: {
           curve: "smooth",
         },

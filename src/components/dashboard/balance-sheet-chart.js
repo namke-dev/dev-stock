@@ -48,6 +48,12 @@ export default function BalanceSheetChart({ chartData }) {
           },
         },
         colors: colorPalette,
+        dataLabels: {
+          enabled: true,
+          formatter: function (value) {
+            return formatAxisLabel(value, 0);
+          },
+        },
         stroke: {
           curve: "smooth",
         },
