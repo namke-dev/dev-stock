@@ -1,5 +1,5 @@
-import { FaMoon } from "react-icons/fa";
-import React, { useContext } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
+import React, { useContext, useEffect } from "react";
 import ThemeContext from "../context/theme-context";
 
 export default function ThemeSwitch() {
@@ -16,20 +16,47 @@ export default function ThemeSwitch() {
       document.documentElement.classList.remove("dark");
     }
   };
+
+  useEffect(() => {
+    console.log("Load previous theme setting");
+    const localTheme = window.localStorage.getItem("theme");
+    if (localTheme) {
+      if (localTheme === "dark") {
+        console.log("==> Dark");
+        setDarkMode(true);
+        document.documentElement.classList.add("dark");
+      } else {
+        console.log("==> Light");
+        setDarkMode(false);
+        document.documentElement.classList.remove("dark");
+      }
+    }
+  }, []);
+
   return (
     <button
-      className={`rounded-lg border-1 border-neutral-200 p-1.5
+      className={`rounded-full p-2
       absolute 
       right-1
-      md:right-4 md:top-4
-      shadow-md
-      dark:bg-slate-500`}
+      md:right-4 md:top-3
+      border border-gray-300 dark:border-gray-700
+      bg-gray-100
+      dark:bg-gray-600
+      `}
       onClick={toggleDarkMode}
     >
-      <FaMoon
-        className={`h-4 w-4 md:h-6 md:w-6 cursor-pointer stroke-1 stroke-neutral-400 fill-yellow-300
-         dark:fill-yellow-400 dark:stroke-yellow-400`}
-      />
+      {darkMode && (
+        <FaMoon
+          className={`h-4 w-4 md:h-6 md:w-6 
+          fill-yellow-300`}
+        />
+      )}{" "}
+      {!darkMode && (
+        <FaSun
+          className={`h-4 w-4 md:h-7 md:w-7 
+          fill-yellow-300`}
+        />
+      )}
     </button>
   );
 }
