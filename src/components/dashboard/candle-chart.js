@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import ThemeContext from "@/context/theme-context";
+import { formatAxisLabel } from "@/utils/chart-helper";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
@@ -38,19 +39,6 @@ const CandleChart = ({ chartData }) => {
       }
     );
 
-    function formatAxisLabel(value) {
-      const absValue = Math.abs(value);
-
-      if (absValue >= 1e9) {
-        return (value / 1e9).toFixed(0) + "B";
-      } else if (absValue >= 1e6) {
-        return (value / 1e6).toFixed(0) + "M";
-      } else if (absValue >= 1e3) {
-        return (value / 1e3).toFixed(0) + "K";
-      } else {
-        return value.toFixed(0);
-      }
-    }
     // set default on-chart filter
     const lastDate = new Date(Object.keys(chartData)[0]);
     const tmpDate = new Date(lastDate);
@@ -64,6 +52,14 @@ const CandleChart = ({ chartData }) => {
           name: "candlestick",
           data: formatedPriceData,
         },
+        {
+          name: "volume",
+          data: formatedVolumeData.map((data) => ({
+            x: data.x,
+            y: data.y,
+            fillColor: data.color, // Use fillColor property to set the color
+          })),
+        },
       ],
       options: {
         chart: {
@@ -73,10 +69,9 @@ const CandleChart = ({ chartData }) => {
             autoSelected: "pan",
             show: true,
           },
-          zoom: {
-            enabled: true,
-            type: "xy",
-          },
+        },
+        legend: {
+          show: false,
         },
         plotOptions: {
           candlestick: {
@@ -95,8 +90,8 @@ const CandleChart = ({ chartData }) => {
           },
         },
         yaxis: {
-          tooltip: {
-            enabled: true,
+          title: {
+            text: "Price (USD)",
           },
           labels: {
             formatter: function (value) {
@@ -108,17 +103,29 @@ const CandleChart = ({ chartData }) => {
           },
           forceNiceScale: true,
         },
-      },
-      seriesBar: [
-        {
-          name: "volume",
-          data: formatedVolumeData.map((data) => ({
-            x: data.x,
-            y: data.y,
-            fillColor: data.color, // Use fillColor property to set the color
-          })),
+        tooltip: {
+          enabled: true,
+          followCursor: true,
+          theme: darkMode ? "dark" : "light",
+          x: {
+            show: true,
+            format: "dd MMM yy",
+          },
+          y: {
+            show: true,
+            formatter: function (value) {
+              return formatAxisLabel(value, 2);
+            },
+          },
+          marker: {
+            show: false,
+          },
+          interceptor: {
+            enabled: false,
+          },
         },
-      ],
+      },
+
       optionsBar: {
         chart: {
           type: "bar",
@@ -141,13 +148,8 @@ const CandleChart = ({ chartData }) => {
             },
           },
         },
-        dataLabels: {
-          enabled: false,
-        },
-        plotOptions: {
-          bar: {
-            columnWidth: "80%",
-          },
+        legend: {
+          show: false,
         },
         stroke: {
           width: 0,
@@ -164,14 +166,38 @@ const CandleChart = ({ chartData }) => {
           },
         },
         yaxis: {
+          title: {
+            text: "Volumne",
+          },
           labels: {
-            show: true,
             formatter: function (value) {
-              return formatAxisLabel(value, darkMode);
+              return formatAxisLabel(value);
             },
             style: {
               colors: darkMode ? "#999999" : "#222222",
             },
+          },
+          forceNiceScale: true,
+        },
+        tooltip: {
+          enabled: true,
+          followCursor: true,
+          theme: darkMode ? "dark" : "light",
+          x: {
+            show: true,
+            format: "dd MMM yy",
+          },
+          y: {
+            show: true,
+            formatter: function (value) {
+              return formatAxisLabel(value, 2);
+            },
+          },
+          marker: {
+            show: true,
+          },
+          interceptor: {
+            enabled: false,
           },
         },
       },
@@ -198,7 +224,7 @@ const CandleChart = ({ chartData }) => {
           {typeof window !== "undefined" && domLoaded && (
             <ReactApexChart
               options={chartOptions.optionsBar}
-              series={chartOptions.seriesBar}
+              series={chartOptions.series}
               type="bar"
               height={"100%"}
               width={"100%"}

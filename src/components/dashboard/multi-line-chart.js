@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import ThemeContext from "@/context/theme-context";
+import { formatAxisLabel } from "@/utils/chart-helper";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export default function MultiLineChart({ chartData }) {
+export default function IncomeStatementChart({ chartData }) {
   const { darkMode } = useContext(ThemeContext);
   const [chartOptions, setChartOptions] = useState({});
   const [domLoaded, setDomLoaded] = useState(false);
@@ -17,15 +18,15 @@ export default function MultiLineChart({ chartData }) {
     const seriesData = [
       {
         name: "Revenue",
-        data: chartData.map((data) => data.revenue),
-      },
-      {
-        name: "Operating Expense",
-        data: chartData.map((data) => data.operating_expense),
+        data: chartData.map((data) => data.revenue).reverse(),
       },
       {
         name: "Net Income",
-        data: chartData.map((data) => data.net_income),
+        data: chartData.map((data) => data.net_income).reverse(),
+      },
+      {
+        name: "Operating Expense",
+        data: chartData.map((data) => data.operating_expense).reverse(),
       },
     ];
 
@@ -33,7 +34,6 @@ export default function MultiLineChart({ chartData }) {
       series: seriesData,
       options: {
         chart: {
-          height: 350,
           type: "line",
           animations: {
             enabled: false,
@@ -44,13 +44,13 @@ export default function MultiLineChart({ chartData }) {
           },
           zoom: {
             enabled: true,
-            type: "xy",
+            type: "x",
           },
         },
-        colors: colorPalette,
-        dataLabels: {
-          enabled: true,
+        legend: {
+          show: true,
         },
+        colors: colorPalette,
         stroke: {
           curve: "smooth",
         },
@@ -65,9 +65,8 @@ export default function MultiLineChart({ chartData }) {
           size: 1,
         },
         xaxis: {
-          categories: chartData.map((data) => data.year.toString()),
+          categories: chartData.map((data) => data.year.toString()).reverse(),
           title: {
-            text: "Month",
             style: {
               color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
             },
@@ -80,20 +79,22 @@ export default function MultiLineChart({ chartData }) {
         },
         yaxis: {
           title: {
-            text: "Temperature",
+            text: "Value (USD)",
             style: {
               color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
             },
           },
-          // min: 5,
-          // max: 40,
           labels: {
+            formatter: function (value) {
+              return formatAxisLabel(value);
+            },
             style: {
               colors: darkMode ? "#ffffff" : "#000000", // Adjust label color for dark mode
             },
           },
         },
         legend: {
+          show: true,
           position: "top",
           horizontalAlign: "right",
           floating: true,
@@ -107,7 +108,31 @@ export default function MultiLineChart({ chartData }) {
           enabled: false,
         },
         tooltip: {
-          enabled: true, // Tooltips will show information about each series when hovering
+          enabled: true,
+          followCursor: true,
+          theme: darkMode ? "dark" : "light",
+          x: {
+            show: true,
+            format: "dd MMM yy",
+          },
+          y: {
+            show: true,
+            formatter: function (value) {
+              return formatAxisLabel(value, 2);
+            },
+            title: {
+              formatter: (seriesName) => seriesName,
+            },
+          },
+          marker: {
+            show: false,
+          },
+          onDatasetHover: {
+            highlightDataSeries: true,
+          },
+          style: {
+            fontSize: "14px",
+          },
         },
       },
     });
@@ -132,7 +157,7 @@ export default function MultiLineChart({ chartData }) {
                 type="line"
                 options={chartOptions.options}
                 series={chartOptions.series}
-                height={"100%"}
+                height={"95%"}
                 width={"100%"}
               />
             )}
