@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TrendCardDetail from "./trend-card-detail";
 
 export default function TrendCard({ selectedTrend }) {
+  const [domLoaded, setDomLoaded] = useState(false);
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
   return (
     <div className="h-full w-full">
       <div className="flex gap-3 justify-between px-5 pb-2 text-sm font-semibold">
@@ -12,14 +17,18 @@ export default function TrendCard({ selectedTrend }) {
         <p className="flex-1 text-right">Change(%)</p>
       </div>
 
-      <div className="divide-y-2 h-[95%] overflow-y-auto custom-scrollbar">
-        {selectedTrend.map((item) => {
-          return (
-            <div key={item.symbol}>
-              <TrendCardDetail stockDetail={item} />
-            </div>
-          );
-        })}
+      <div
+        className="divide-y-2 dark:divide-gray-500
+        h-[95%] overflow-y-auto custom-scrollbar"
+      >
+        {domLoaded &&
+          selectedTrend.map((item) => {
+            return (
+              <div key={item.symbol}>
+                <TrendCardDetail stockDetail={item} />
+              </div>
+            );
+          })}
       </div>
     </div>
   );

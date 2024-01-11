@@ -9,6 +9,7 @@ import TrendCard from "./dashboard/trend-card";
 import { mockMarketTrendResponse } from "@/mock/mock-data";
 import Tabs from "./tabs";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
+import ThemeSwitch from "./theme-switch";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
@@ -28,11 +29,11 @@ export default function Dashboard() {
     <div className="flex justify-center items-center">
       {/* Dashboard container */}
       <div
-        className="h-[84rem] md:h-[96.7vh] 
+        className="md:h-[70rem] h-[110rem]
       w-full
       grid 
       grid-cols-1 md:grid-cols-3
-      grid-row-10 md:grid-row-12
+      grid-rows-12
       auto-rows-fr
       gap-1 px-2 py-2
       font-quicksand text-gray-700 text-md"
@@ -41,20 +42,35 @@ export default function Dashboard() {
         <div
           className="
           col-span-1 md:col-span-3
-          row-span-1 md:row-span-2
+          row-span-1
+          flex flex-col justify-center items-center
+          "
+        >
+          <Cart>
+            <ThemeSwitch />
+            <SearchBar />
+          </Cart>
+        </div>
+
+        {/* trend table */}
+
+        <div
+          className="
+          col-span-1 md:col-span-3
+          row-span-3 md:row-span-5
           flex flex-col justify-center items-center
           "
         >
           <Cart>
             <OptionBar />
-            <SearchBar />
+            <TrendCard selectedTrend={selectedTrend} />
           </Cart>
         </div>
 
         {/* DashBoard chart */}
         <div
           className="col-span-1 md:col-span-2
-        row-span-3 md:row-span-9"
+        row-span-5 md:row-span-9"
         >
           {/* <Cart>
             <ChartCard />
@@ -73,7 +89,7 @@ export default function Dashboard() {
         </div>
 
         {/* Dashboard Company Infor */}
-        <div className="row-span-3 md:row-span-7">
+        <div className="row-span-4 md:row-span-7">
           <Cart>
             <CompanyDetail />
           </Cart>

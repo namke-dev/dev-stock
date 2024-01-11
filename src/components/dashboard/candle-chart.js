@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import ThemeContext from "@/context/theme-context";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
 const CandleChart = ({ chartData }) => {
+  const { darkMode } = useContext(ThemeContext);
+  console.log("Darkmode: " + darkMode);
   const [chartOptions, setChartOptions] = useState({});
   const [domLoaded, setDomLoaded] = useState(false);
 
@@ -31,8 +34,6 @@ const CandleChart = ({ chartData }) => {
     const firstDate = new Date(
       Object.keys(chartData)[Object.keys(chartData).length - 1]
     );
-    console.log("lastDate: " + lastDate);
-    console.log("firstDate: " + firstDate);
 
     setChartOptions({
       series: [
@@ -56,13 +57,18 @@ const CandleChart = ({ chartData }) => {
         plotOptions: {
           candlestick: {
             colors: {
-              upward: "#00CC00",
-              downward: "#FF3333",
+              upward: darkMode ? "#00CC00" : "#4CAF50",
+              downward: darkMode ? "#FF3333" : "#F44336",
             },
           },
         },
         xaxis: {
           type: "datetime",
+          labels: {
+            style: {
+              colors: darkMode ? "#FFFFFF" : "#000000",
+            },
+          },
         },
         yaxis: {
           tooltip: {
@@ -70,11 +76,13 @@ const CandleChart = ({ chartData }) => {
           },
           labels: {
             formatter: function (value) {
-              // Format the y-axis labels to a fixed number of decimal places
               return value.toFixed(0);
             },
+            style: {
+              colors: darkMode ? "#FFFFFF" : "#000000",
+            },
           },
-          forceNiceScale: true, // Ensure that the y-axis labels are nicely rounded
+          forceNiceScale: true,
         },
       },
       seriesBar: [
@@ -97,11 +105,11 @@ const CandleChart = ({ chartData }) => {
               max: lastDate.getTime(),
             },
             fill: {
-              color: "#ccc",
+              color: darkMode ? "#424242" : "#ccc",
               opacity: 0.4,
             },
             stroke: {
-              color: "#0D47A1",
+              color: darkMode ? "#2196F3" : "#0D47A1",
             },
           },
         },
@@ -111,7 +119,7 @@ const CandleChart = ({ chartData }) => {
         plotOptions: {
           bar: {
             columnWidth: "80%",
-            color: "#F15B46",
+            color: darkMode ? "#FFC107" : "#F15B46",
           },
         },
         stroke: {
@@ -122,17 +130,27 @@ const CandleChart = ({ chartData }) => {
           axisBorder: {
             offsetX: 13,
           },
+          labels: {
+            style: {
+              colors: darkMode ? "#FFFFFF" : "#000000",
+            },
+          },
         },
         yaxis: {
           labels: {
             show: true,
+          },
+          labels: {
+            style: {
+              colors: darkMode ? "#FFFFFF" : "#000000",
+            },
           },
         },
       },
     });
 
     setDomLoaded(true);
-  }, [chartData]);
+  }, [chartData, darkMode]);
 
   return (
     <div className="mixed-chart h-full w-full">
