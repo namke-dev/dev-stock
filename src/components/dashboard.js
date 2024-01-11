@@ -13,7 +13,6 @@ import MultiLineChart from "./dashboard/multi-line-chart";
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
   const [chartData, setChartData] = useState(null);
-
   const chartTabs = [
     { name: "TIME SERIES", content: <ChartCard chartData={chartData} /> },
     {

@@ -16,7 +16,7 @@ export default function StockOverview() {
       <p className="md:text-lg font-semibold dark:text-white/90">
         {companyOverview.data.symbol}
       </p>
-      <p className="text-green-500 text-lg">
+      <p className="text-green-500 text-md">
         {companyOverview.data.price}{" "}
         <span className="font-extralight text-gray-400">
           {companyOverview.data.currency}
