@@ -26,7 +26,7 @@ const Tabs = ({ tabs }) => {
       </div>
       <div
         className="w-full h-[92%]
-      mt-2"
+      my-3"
       >
         {tabs[activeTab].content}
       </div>
