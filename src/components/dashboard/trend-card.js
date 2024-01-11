@@ -8,11 +8,11 @@ export default function TrendCard({ selectedTrend }) {
   }, []);
 
   return (
-    <div className="h-[75%] md:h-[85%] w-full">
+    <div className="h-[95%] md:h-[95%] w-full">
       <div
         className="flex gap-3 justify-between 
-        px-5 pb-2 text-sm 
-        dark:text-white/90
+        px-5 pb-2 text-sm font-thin
+        dark:text-white/70
         border-b border-gray-200 dark:border-gray-700"
       >
         <p className="flex-1">Symbol</p>

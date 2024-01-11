@@ -37,15 +37,15 @@ export default function Dashboard() {
 
   const trendTabs = [
     { name: "GAINERS", content: <TrendCard selectedTrend={selectedTrend} /> },
-    // { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
+    { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
     // {
     //   name: "MARKET INDEXES",
     //   content: <TrendCard selectedTrend={selectedTrend} />,
     // },
-    // {
-    //   name: "MOST ACTIVE",
-    //   content: <TrendCard selectedTrend={selectedTrend} />,
-    // },
+    {
+      name: "MOST ACTIVE",
+      content: <TrendCard selectedTrend={selectedTrend} />,
+    },
   ];
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Dashboard() {
     <div className="flex justify-center items-center w-full">
       {/* Dashboard container */}
       <div
-        className="md:h-[70rem] h-[110rem]
+        className="md:h-[80rem] h-[120rem]
       w-full
       grid 
       grid-cols-1 md:grid-cols-4
@@ -78,7 +78,7 @@ export default function Dashboard() {
         <div
           className="
           col-span-1 md:col-span-4
-          row-span-3 md:row-span-5
+          row-span-4 md:row-span-6
           flex flex-col justify-center items-center
           "
         >
