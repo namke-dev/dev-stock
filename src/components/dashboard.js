@@ -48,7 +48,8 @@ export default function Dashboard() {
       grid-rows-12
       auto-rows-fr
       gap-1 px-2 py-2
-      font-quicksand text-gray-700 text-md"
+      font-quicksand text-gray-700 text-md
+      "
       >
         {/* Search Bar */}
         <div

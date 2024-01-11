@@ -33,7 +33,7 @@ export default function CompanyDetail() {
         text-gray-600
         dark:text-white/85
         divide-y-2
-        dark:divide-gray-500
+        dark:divide-gray-700
         px-2
         py-0
         "

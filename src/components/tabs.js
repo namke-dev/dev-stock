@@ -9,7 +9,7 @@ const Tabs = ({ tabs }) => {
 
   return (
     <div className="w-full h-full">
-      <div className="flex border-b border-gray-300">
+      <div className="flex border-b border-gray-300 dark:border-gray-800">
         {tabs.map((tab, index) => (
           <div
             key={index}
