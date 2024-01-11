@@ -13,7 +13,9 @@ export default function StockOverview() {
       px-2 gap-1
       "
     >
-      <p className="md:text-lg font-semibold">{companyOverview.data.symbol}</p>
+      <p className="md:text-lg font-semibold dark:text-white/90">
+        {companyOverview.data.symbol}
+      </p>
       <p className="text-green-500 text-lg">
         {companyOverview.data.price}{" "}
         <span className="font-extralight text-gray-400">

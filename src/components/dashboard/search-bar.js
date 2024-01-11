@@ -30,11 +30,11 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row px-2 justify-start mt-4 md:mt-2.5 h-auto w-full md:gap-4">
+      <div className="flex flex-col md:flex-row px-2 justify-start mt-4 md:mt-2.5 h-auto w-full md:gap-4 dark:text-white/90">
         <p className="mb-1 text-sm font-semibold md:mt-2">Search symbol</p>
         <div
           className="flex items-center
-          border-2 border-indigo-200 dark:border-indigo-800
+          border-2 border-indigo-200 dark:border-indigo-700
           rounded-md
           relative
           z-50
@@ -44,7 +44,7 @@ export default function SearchBar() {
         >
           <input
             type="text"
-            className="mx-3 focus:outline-0 flex flex-grow text-gray-900 bg-gray-50 dark:bg-gray-800"
+            className="mx-3 focus:outline-0 flex flex-grow bg-gray-50 dark:bg-gray-900"
             placeholder="ex: google"
             value={input}
             onChange={(event) => {
@@ -66,10 +66,10 @@ export default function SearchBar() {
 
           {/* Search button */}
           <button
-            className="h-8 w-14 bg-indigo-400 dark:bg-indigo-800 rounded-sm flex justify-center items-center mx-[0.15rem]"
+            className="h-8 w-14 bg-indigo-400 dark:bg-indigo-700 rounded-sm flex justify-center items-center mx-[0.15rem]"
             onClick={updateBestMatches}
           >
-            <FaSearch className="h-4 w-4 fill-gray-50 dark:fill-gray-800" />
+            <FaSearch className="h-4 w-4 fill-gray-50 dark:fill-white/90" />
           </button>
 
           {/* Search result */}

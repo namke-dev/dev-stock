@@ -13,6 +13,8 @@ export default function ChartFilter({ text, isActive, onClick }) {
       border border-indigo-500
       text-sm
       py-2
+      hover:bg-indigo-400
+      hover:text-white/90
       ${isActive ? "bg-indigo-500 text-gray-50" : "text-indigo-500"}`}
     >
       {text}

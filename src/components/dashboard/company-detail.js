@@ -6,9 +6,9 @@ export default function CompanyDetail() {
     mockCompanyOverviewResponse
   );
   const detailListType = {
+    previous_close: "Previous close",
     year_low: "Year low",
     year_high: "Year high",
-    previous_close: "Previous close",
     volume: "Volume",
     primary_exchange: "Primary exchange",
     last_update_utc: "Last update",
@@ -18,16 +18,10 @@ export default function CompanyDetail() {
     company_dividend_yield: "Dividend yield",
 
     company_ceo: "CEO",
-    // company_employees: "Num of employees",
+    company_employees: "Num of employees",
     company_founded_date: "Founded Date",
-    // company_city: "City",
-    // company_street_address: "Address",
-  };
-
-  const financialListType = {
-    income_statement: "Income statement",
-    balance_sheet: "Balance sheet",
-    cash_flow: "Cash flow",
+    company_city: "City",
+    company_street_address: "Address",
   };
 
   return (
@@ -52,19 +46,6 @@ export default function CompanyDetail() {
             >
               <span>{detailListType[item]}</span>
               <span>{companyOverview.data[item]}</span>
-            </li>
-          );
-        })}
-
-        {Object.keys(financialListType).map((item) => {
-          return (
-            <li
-              key={item}
-              className="flex-1 flex justify-between items-center py-1 text-sm"
-            >
-              <a href="/" className="text-blue-600 underline">
-                {financialListType[item]}
-              </a>
             </li>
           );
         })}

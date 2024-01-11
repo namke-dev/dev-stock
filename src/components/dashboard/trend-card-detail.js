@@ -4,7 +4,12 @@ export default function TrendCardDetail({ stockDetail }) {
   return (
     <div
       className="flex gap-3 justify-between px-5
-      text-sm hover:bg-gray-200"
+      text-sm 
+      hover:bg-gray-300
+      
+      dark:text-white/90
+      dark:hover:bg-white/30
+      "
     >
       <p
         className={`flex-1 font-semibold ${

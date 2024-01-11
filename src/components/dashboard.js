@@ -15,9 +15,21 @@ export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
   const [chartData, setChartData] = useState(null);
 
-  const tabs = [
-    { name: "Chart", content: <ChartCard chartData={chartData} /> },
-    { name: "Trend", content: <TrendCard selectedTrend={selectedTrend} /> },
+  const chartTabs = [
+    { name: "Time series", content: <ChartCard chartData={chartData} /> },
+    { name: "Income statement", content: <ChartCard chartData={chartData} /> },
+    { name: "Balance sheet", content: <ChartCard chartData={chartData} /> },
+    { name: "Cash flow", content: <ChartCard chartData={chartData} /> },
+  ];
+
+  const trendTabs = [
+    { name: "Gainers", content: <TrendCard selectedTrend={selectedTrend} /> },
+    { name: "Loser", content: <TrendCard selectedTrend={selectedTrend} /> },
+    {
+      name: "Market index",
+      content: <TrendCard selectedTrend={selectedTrend} />,
+    },
+    { name: "Cash flow", content: <TrendCard selectedTrend={selectedTrend} /> },
   ];
 
   useEffect(() => {
@@ -32,16 +44,16 @@ export default function Dashboard() {
         className="md:h-[70rem] h-[110rem]
       w-full
       grid 
-      grid-cols-1 md:grid-cols-3
+      grid-cols-1 md:grid-cols-4
       grid-rows-12
       auto-rows-fr
       gap-1 px-2 py-2
       font-quicksand text-gray-700 text-md"
       >
-        {/* Option Bar */}
+        {/* Search Bar */}
         <div
           className="
-          col-span-1 md:col-span-3
+          col-span-1 md:col-span-4
           row-span-1
           flex flex-col justify-center items-center
           "
@@ -56,28 +68,23 @@ export default function Dashboard() {
 
         <div
           className="
-          col-span-1 md:col-span-3
+          col-span-1 md:col-span-4
           row-span-3 md:row-span-5
           flex flex-col justify-center items-center
           "
         >
           <Cart>
-            <OptionBar />
-            <TrendCard selectedTrend={selectedTrend} />
+            <Tabs tabs={trendTabs} />
           </Cart>
         </div>
 
         {/* DashBoard chart */}
         <div
-          className="col-span-1 md:col-span-2
+          className="col-span-1 md:col-span-3
         row-span-5 md:row-span-9"
         >
-          {/* <Cart>
-            <ChartCard />
-          </Cart> */}
-          {/* <TrendCard selectedTrend={selectedTrend} /> */}
           <Cart>
-            <Tabs tabs={tabs} />
+            <Tabs tabs={chartTabs} />
           </Cart>
         </div>
 
