@@ -47,6 +47,21 @@ export default function BalanceSheetChart({ chartData }) {
             type: "x",
           },
         },
+        title: {
+          text: "BALANCE SHEET SUMUP (years)",
+          align: "left",
+          margin: 10,
+          offsetX: 0,
+          offsetY: 0,
+          floating: false,
+          style: {
+            fontSize: "18px",
+            fontWeight: "bold",
+            fontFamily: undefined,
+            color: darkMode ? "#AAAAAA" : "#263238",
+          },
+        },
+
         colors: colorPalette,
         dataLabels: {
           enabled: true,
