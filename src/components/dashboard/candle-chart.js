@@ -71,10 +71,11 @@ const CandleChart = ({ chartData }) => {
           id: "candles",
           toolbar: {
             autoSelected: "pan",
-            show: false,
+            show: true,
           },
           zoom: {
-            enabled: false,
+            enabled: true,
+            type: "xy",
           },
         },
         plotOptions: {

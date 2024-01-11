@@ -38,6 +38,14 @@ export default function MultiLineChart({ chartData }) {
           animations: {
             enabled: false,
           },
+          toolbar: {
+            autoSelected: "pan",
+            show: true,
+          },
+          zoom: {
+            enabled: true,
+            type: "xy",
+          },
         },
         colors: colorPalette,
         dataLabels: {
@@ -45,13 +53,6 @@ export default function MultiLineChart({ chartData }) {
         },
         stroke: {
           curve: "smooth",
-        },
-        title: {
-          text: "Average High & Low Temperature",
-          align: "left",
-          style: {
-            color: darkMode ? "#ffffff" : "#000000", // Adjust text color for dark mode
-          },
         },
         grid: {
           borderColor: darkMode ? "#555555" : "#e7e7e7",
