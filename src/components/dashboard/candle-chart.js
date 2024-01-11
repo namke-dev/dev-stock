@@ -30,10 +30,26 @@ const CandleChart = ({ chartData }) => {
         y: parseFloat(values["6. volume"]),
       })
     );
+
+    function formatAxisLabel(value) {
+      const absValue = Math.abs(value);
+
+      if (absValue >= 1e9) {
+        return (value / 1e9).toFixed(0) + "B";
+      } else if (absValue >= 1e6) {
+        return (value / 1e6).toFixed(0) + "M";
+      } else if (absValue >= 1e3) {
+        return (value / 1e3).toFixed(0) + "K";
+      } else {
+        return value.toFixed(0);
+      }
+    }
+    // set default on-chart filter
     const lastDate = new Date(Object.keys(chartData)[0]);
-    const firstDate = new Date(
-      Object.keys(chartData)[Object.keys(chartData).length - 1]
-    );
+    const tmpDate = new Date(lastDate);
+    tmpDate.setDate(tmpDate.getDate() - 20);
+    const lastKeyDate = new Date(Object.keys(chartData).slice(-1)[0]);
+    const firstDate = new Date(Math.max(tmpDate, lastKeyDate));
 
     setChartOptions({
       series: [
@@ -66,7 +82,7 @@ const CandleChart = ({ chartData }) => {
           type: "datetime",
           labels: {
             style: {
-              colors: darkMode ? "#FFFFFF" : "#000000",
+              colors: darkMode ? "#999999" : "#222222",
             },
           },
         },
@@ -79,7 +95,7 @@ const CandleChart = ({ chartData }) => {
               return value.toFixed(0);
             },
             style: {
-              colors: darkMode ? "#FFFFFF" : "#000000",
+              colors: darkMode ? "#999999" : "#222222",
             },
           },
           forceNiceScale: true,
@@ -105,11 +121,11 @@ const CandleChart = ({ chartData }) => {
               max: lastDate.getTime(),
             },
             fill: {
-              color: darkMode ? "#424242" : "#ccc",
-              opacity: 0.4,
+              color: darkMode ? "#FFFFFF" : "#000000",
+              opacity: 0.15,
             },
             stroke: {
-              color: darkMode ? "#2196F3" : "#0D47A1",
+              color: darkMode ? "#222222" : "#0D47A1",
             },
           },
         },
@@ -132,17 +148,18 @@ const CandleChart = ({ chartData }) => {
           },
           labels: {
             style: {
-              colors: darkMode ? "#FFFFFF" : "#000000",
+              colors: darkMode ? "#999999" : "#222222",
             },
           },
         },
         yaxis: {
           labels: {
             show: true,
-          },
-          labels: {
+            formatter: function (value) {
+              return formatAxisLabel(value, darkMode);
+            },
             style: {
-              colors: darkMode ? "#FFFFFF" : "#000000",
+              colors: darkMode ? "#999999" : "#222222",
             },
           },
         },

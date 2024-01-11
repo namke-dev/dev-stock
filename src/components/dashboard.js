@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Cart from "./cart";
-import OptionBar from "./dashboard/option-bar";
 import SearchBar from "./dashboard/search-bar";
 import StockOverview from "./dashboard/stock-overview";
 import CompanyDetail from "./dashboard/company-detail";

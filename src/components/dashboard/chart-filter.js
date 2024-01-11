@@ -10,12 +10,16 @@ export default function ChartFilter({ text, isActive, onClick }) {
       rounded-sm
       flex items-center justify-center
       cursor-pointer
-      border border-indigo-500
+      border border-indigo-500 dark:border-indigo-700
       text-sm
+      font-thin
       py-2
-      hover:bg-indigo-400
-      hover:text-white/90
-      ${isActive ? "bg-indigo-500 text-gray-50" : "text-indigo-500"}`}
+
+      ${
+        isActive
+          ? "bg-indigo-500 text-gray-50"
+          : "text-indigo-700 dark:text-indigo-300 dark:bg-black/10 hover:bg-indigo-200 dark:hover:bg-indigo-800 dark:hover:text-white/80"
+      }`}
     >
       {text}
     </button>

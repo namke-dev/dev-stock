@@ -32,8 +32,6 @@ export default function CompanyDetail() {
         w-full h-auto
         text-gray-600
         dark:text-white/85
-        divide-y-2
-        dark:divide-gray-700
         px-2
         py-0
         "
@@ -42,7 +40,7 @@ export default function CompanyDetail() {
           return (
             <li
               key={item}
-              className="flex-1 flex justify-between items-center py-1 text-sm"
+              className="flex-1 flex justify-between items-center py-1.5 px-1 text-sm even:bg-black/10 dark:even:bg-white/10"
             >
               <span>{detailListType[item]}</span>
               <span>{companyOverview.data[item]}</span>
