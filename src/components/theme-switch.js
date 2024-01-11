@@ -28,7 +28,7 @@ export default function ThemeSwitch() {
       onClick={toggleDarkMode}
     >
       <FaMoon
-        className={`h-4 w-4 md:h-6 md:w-6 cursor-pointer stroke-1 stroke-neutral-400 fill-gray-300
+        className={`h-4 w-4 md:h-6 md:w-6 cursor-pointer stroke-1 stroke-neutral-400 fill-yellow-300
          dark:fill-yellow-400 dark:stroke-yellow-400`}
       />
     </button>
