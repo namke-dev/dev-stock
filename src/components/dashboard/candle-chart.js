@@ -8,9 +8,6 @@ const CandleChart = ({ chartData }) => {
   const [chartOptions, setChartOptions] = useState({});
   const [domLoaded, setDomLoaded] = useState(false);
 
-  console.log("chartData");
-  if (!chartData) return;
-
   useEffect(() => {
     const formatedPriceData = Object.entries(chartData).map(
       ([date, values]) => ({
