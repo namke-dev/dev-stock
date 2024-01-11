@@ -9,7 +9,7 @@ import ThemeContext from "@/context/theme-context";
 import { useState } from "react";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [stockSymbol, setStockSymbol] = useState("AAPL:NASDAQ");
 
   return (
