@@ -17,15 +17,15 @@ export default function IncomeStatementChart({ chartData }) {
     const colorPalette = darkMode ? darkThemelineColors : lightThemelineColors;
     const seriesData = [
       {
-        name: "Revenue",
+        name: "REVENUE",
         data: chartData.map((data) => data.revenue).reverse(),
       },
       {
-        name: "Net Income",
+        name: "NET INCOME",
         data: chartData.map((data) => data.net_income).reverse(),
       },
       {
-        name: "Operating Expense",
+        name: "OPERATING EXPENSE",
         data: chartData.map((data) => data.operating_expense).reverse(),
       },
     ];
@@ -96,10 +96,7 @@ export default function IncomeStatementChart({ chartData }) {
         legend: {
           show: true,
           position: "top",
-          horizontalAlign: "right",
-          floating: true,
-          offsetY: -25,
-          offsetX: -5,
+          horizontalAlign: "left",
           labels: {
             colors: darkMode ? "#ffffff" : "#000000", // Adjust legend label color for dark mode
           },
