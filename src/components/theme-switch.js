@@ -7,7 +7,6 @@ export default function ThemeSwitch() {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    console.log(darkMode);
 
     if (!darkMode) {
       window.localStorage.setItem("theme", "dark");

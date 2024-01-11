@@ -7,7 +7,6 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
 
 const CandleChart = ({ chartData }) => {
   const { darkMode } = useContext(ThemeContext);
-  console.log("Darkmode: " + darkMode);
   const [chartOptions, setChartOptions] = useState({});
   const [domLoaded, setDomLoaded] = useState(false);
 
@@ -25,11 +24,21 @@ const CandleChart = ({ chartData }) => {
     );
 
     const formatedVolumeData = Object.entries(chartData).map(
-      ([date, values]) => ({
-        x: new Date(date).getTime(),
-        y: parseFloat(values["6. volume"]),
-      })
+      ([date, values]) => {
+        const isGreen =
+          parseFloat(values["4. close"]) >= parseFloat(values["1. open"]);
+        const color = isGreen ? "#00CC00" : "#F44336";
+
+        return {
+          x: new Date(date).getTime(),
+          y: parseFloat(values["6. volume"]),
+          isGreen,
+          color,
+        };
+      }
     );
+
+    console.log(formatedVolumeData);
 
     function formatAxisLabel(value) {
       const absValue = Math.abs(value);
@@ -104,7 +113,11 @@ const CandleChart = ({ chartData }) => {
       seriesBar: [
         {
           name: "volume",
-          data: formatedVolumeData,
+          data: formatedVolumeData.map((data) => ({
+            x: data.x,
+            y: data.y,
+            fillColor: data.color, // Use fillColor property to set the color
+          })),
         },
       ],
       optionsBar: {
@@ -135,7 +148,6 @@ const CandleChart = ({ chartData }) => {
         plotOptions: {
           bar: {
             columnWidth: "80%",
-            color: darkMode ? "#FFC107" : "#F15B46",
           },
         },
         stroke: {
