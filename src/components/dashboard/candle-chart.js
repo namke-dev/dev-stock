@@ -41,7 +41,6 @@ const CandleChart = ({ chartData }) => {
       options: {
         chart: {
           type: "candlestick",
-          height: 290,
           id: "candles",
           toolbar: {
             autoSelected: "pan",
@@ -83,7 +82,6 @@ const CandleChart = ({ chartData }) => {
       ],
       optionsBar: {
         chart: {
-          height: 160,
           type: "bar",
           brush: {
             enabled: true,
@@ -92,10 +90,8 @@ const CandleChart = ({ chartData }) => {
           selection: {
             enabled: true,
             xaxis: {
-              min: new Date(Object.keys(chartData)[0]).getTime(),
-              max: new Date(
-                Object.keys(chartData)[Object.keys(chartData).length - 1]
-              ).getTime(),
+              min: new Date("1 Jan 2023").getTime(),
+              max: new Date("10 Jan 2023").getTime(),
             },
             fill: {
               color: "#ccc",
