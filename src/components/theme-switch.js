@@ -36,12 +36,12 @@ export default function ThemeSwitch() {
   return (
     <button
       className={`rounded-full p-2
-      absolute 
-      right-1
-      md:right-4 md:top-3
+      fixed top-3 right-3 md:top-7 md:right-7
+      z-50
       border border-gray-300 dark:border-gray-700
       bg-gray-100
       dark:bg-gray-600
+      opacity-80
       `}
       onClick={toggleDarkMode}
     >

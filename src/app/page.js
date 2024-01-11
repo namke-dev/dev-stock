@@ -1,6 +1,9 @@
 "use client";
 
 import Dashboard from "@/components/dashboard";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import ThemeSwitch from "@/components/theme-switch";
 import StockContext from "@/context/stock-context";
 import ThemeContext from "@/context/theme-context";
 import { useState } from "react";
@@ -12,7 +15,10 @@ export default function Home() {
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
       <StockContext.Provider value={{ stockSymbol, setStockSymbol }}>
+        <Header />
         <Dashboard />
+        <ThemeSwitch />
+        <Footer />
       </StockContext.Provider>
     </ThemeContext.Provider>
   );

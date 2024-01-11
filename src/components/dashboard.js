@@ -8,27 +8,29 @@ import TrendCard from "./dashboard/trend-card";
 import { mockMarketTrendResponse } from "@/mock/mock-data";
 import Tabs from "./tabs";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
-import ThemeSwitch from "./theme-switch";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
   const [chartData, setChartData] = useState(null);
 
   const chartTabs = [
-    { name: "Time series", content: <ChartCard chartData={chartData} /> },
-    { name: "Income statement", content: <ChartCard chartData={chartData} /> },
-    { name: "Balance sheet", content: <ChartCard chartData={chartData} /> },
-    { name: "Cash flow", content: <ChartCard chartData={chartData} /> },
+    { name: "TIME SERIES", content: <ChartCard chartData={chartData} /> },
+    { name: "INCOME STATEMENT", content: <ChartCard chartData={chartData} /> },
+    { name: "BALANCE SHEET", content: <ChartCard chartData={chartData} /> },
+    { name: "CASH FLOW", content: <ChartCard chartData={chartData} /> },
   ];
 
   const trendTabs = [
-    { name: "Gainers", content: <TrendCard selectedTrend={selectedTrend} /> },
-    { name: "Loser", content: <TrendCard selectedTrend={selectedTrend} /> },
+    { name: "GAINERS", content: <TrendCard selectedTrend={selectedTrend} /> },
+    { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
     {
-      name: "Market index",
+      name: "MARKET INDEXES",
       content: <TrendCard selectedTrend={selectedTrend} />,
     },
-    { name: "Cash flow", content: <TrendCard selectedTrend={selectedTrend} /> },
+    {
+      name: "MOST ACTIVE",
+      content: <TrendCard selectedTrend={selectedTrend} />,
+    },
   ];
 
   useEffect(() => {
@@ -50,20 +52,6 @@ export default function Dashboard() {
       font-quicksand text-gray-700 text-md
       "
       >
-        {/* Search Bar */}
-        <div
-          className="
-          col-span-1 md:col-span-4
-          row-span-1
-          flex flex-col justify-center items-center
-          "
-        >
-          <Cart>
-            <ThemeSwitch />
-            <SearchBar />
-          </Cart>
-        </div>
-
         {/* trend table */}
 
         <div
@@ -75,6 +63,18 @@ export default function Dashboard() {
         >
           <Cart>
             <Tabs tabs={trendTabs} />
+          </Cart>
+        </div>
+        {/* Search Bar */}
+        <div
+          className="
+          col-span-1 md:col-span-4
+          row-span-1
+          flex flex-col justify-center items-center
+          "
+        >
+          <Cart>
+            <SearchBar />
           </Cart>
         </div>
 

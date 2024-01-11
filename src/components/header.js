@@ -24,10 +24,9 @@ export default function Header() {
 
   return (
     <header>
-      <div className="flex flex-row flex-wrap items-center justify-start bg-black/80 text-gray-200 text-sm px-3 py-0.5 gap-5">
-        <button>Time_series</button>
+      <div className="flex flex-row flex-wrap items-center justify-start bg-black/80 text-gray-300 text-sm px-3 py-0.5 gap-5">
         <button>Market_trend</button>
-        <button>News</button>
+        <button>Time_series_data</button>
       </div>
     </header>
   );
