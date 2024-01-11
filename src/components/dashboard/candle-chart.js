@@ -82,8 +82,8 @@ const CandleChart = ({ chartData }) => {
         plotOptions: {
           candlestick: {
             colors: {
-              upward: darkMode ? "#00CC00" : "#4CAF50",
-              downward: darkMode ? "#FF3333" : "#F44336",
+              upward: "#00CC00",
+              downward: "#FF3333",
             },
           },
         },
