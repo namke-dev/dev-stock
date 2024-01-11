@@ -8,6 +8,7 @@ import TrendCard from "./dashboard/trend-card";
 import { mockMarketTrendResponse } from "@/mock/mock-data";
 import Tabs from "./tabs";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
+import MultiLineChart from "./dashboard/multi-line-chart";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
@@ -15,7 +16,10 @@ export default function Dashboard() {
 
   const chartTabs = [
     { name: "TIME SERIES", content: <ChartCard chartData={chartData} /> },
-    { name: "INCOME STATEMENT", content: <ChartCard chartData={chartData} /> },
+    {
+      name: "INCOME STATEMENT",
+      content: <MultiLineChart chartData={chartData} />,
+    },
     { name: "BALANCE SHEET", content: <ChartCard chartData={chartData} /> },
     { name: "CASH FLOW", content: <ChartCard chartData={chartData} /> },
   ];
