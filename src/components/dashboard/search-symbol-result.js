@@ -8,7 +8,7 @@ export default function SearSymbolResult({ results }) {
 
   return (
     <ul
-      className={`absolute top-10 
+      className="absolute top-10 
         h-auto max-h-64  w-full
         overflow-y-scroll 
         border border-gray-300
@@ -17,19 +17,17 @@ export default function SearSymbolResult({ results }) {
         py-1
         custom-scrollbar
         z-50
-    ${
-      darkMode
-        ? "bg-gray-900 border-gray-800 custom-scrollbar-dark"
-        : "bg-gray-50  border-neutral-300"
-    }`}
+        dark:bg-gray-700 dark:border-gray-700
+        bg-gray-50
+        "
     >
       {results &&
         results.map((item) => {
           return (
             <li
               key={item.symbol}
-              className={`cursor-pointer p-4 m-1 flex items-center justify-between rounded-md
-              ${darkMode ? "hover:bg-indigo-600" : "hover:bg-indigo-200"}`}
+              className="cursor-pointer p-4 m-1 flex items-center justify-between rounded-md
+              dark:hover:bg-indigo-600 hover:bg-indigo-200"
               onClick={() => {
                 setStockSymbol(item.symbol);
               }}

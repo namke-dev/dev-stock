@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cart from "./cart";
-import SearchBar from "./dashboard/search-bar";
+import SearchSymbolBar from "./dashboard/search-bar";
 import StockOverview from "./dashboard/stock-overview";
 import CompanyDetail from "./dashboard/company-detail";
 import ChartCard from "./dashboard/chart-cart";
@@ -96,7 +96,7 @@ export default function Dashboard() {
           "
         >
           <Cart>
-            <SearchBar />
+            <SearchSymbolBar />
           </Cart>
         </div>
 
