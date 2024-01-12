@@ -13,7 +13,7 @@ const Tabs = ({ tabs }) => {
         {tabs.map((tab, index) => (
           <div
             key={index}
-            className={`cursor-pointer py-0.5 px-4 dark:text-white/70 text-xs font-bold ${
+            className={`cursor-pointer py-0.5 md:px-4 px-4 dark:text-white/70 text-xs font-bold flex items-center justify-center ${
               activeTab === index
                 ? "border-b-2 border-indigo-500  dark:text-white"
                 : "text-gray-400 dark:hover:text-gray-50 hover:text-gray-900"

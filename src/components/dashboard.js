@@ -55,7 +55,7 @@ export default function Dashboard() {
       ),
     },
     {
-      name: "MOST_ACTIVE",
+      name: "MOST ACTIVE",
       content: (
         <TrendCard
           selectedTrend={mockMarketTrendMostActiveResponse.data.trends}
@@ -63,7 +63,7 @@ export default function Dashboard() {
       ),
     },
     {
-      name: "MARKET_INDEXES",
+      name: "MARKET INDEXES",
       content: (
         <TrendCard
           selectedTrend={mockMarketTrendMarketIndexResponse.data.trends}
