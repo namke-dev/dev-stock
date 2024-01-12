@@ -1,10 +1,13 @@
-import { mockCompanyOverviewResponse } from "@/mock/mock-data";
-import React, { useState } from "react";
+import StockOverviewContext from "@/context/stock-overview-context";
+import React, { useContext, useEffect, useState } from "react";
 
 export default function StockOverview() {
-  const [companyOverview, setCompanyOverview] = useState(
-    mockCompanyOverviewResponse
-  );
+  const { stockOverview } = useContext(StockOverviewContext);
+  useEffect(() => {
+    console.log(stockOverview);
+  }, [stockOverview]);
+
+  if (!stockOverview) return <div>Loading . . .</div>;
 
   return (
     <div
@@ -14,28 +17,28 @@ export default function StockOverview() {
       "
     >
       <p className="md:text-lg font-semibold dark:text-white/90">
-        {companyOverview.data.symbol}
+        {stockOverview.symbol}
       </p>
       <p className="text-green-500 text-md">
-        {companyOverview.data.price}{" "}
+        {stockOverview.price}{" "}
         <span className="font-extralight text-gray-400">
-          {companyOverview.data.currency}
+          {stockOverview.currency}
         </span>
       </p>
 
       <a
         className="font-thin text-sm text-blue-600"
-        href={companyOverview.data.company_website}
+        href={stockOverview.company_website}
         target="_blank"
       >
-        {companyOverview.data.name}
+        {stockOverview.name}
       </a>
       <a
         className="font-thin text-sm text-blue-600"
-        href={companyOverview.data.company_cdp_url}
+        href={stockOverview.company_cdp_url}
         target="_blank"
       >
-        CDP: {companyOverview.data.company_cdp_score}
+        CDP: {stockOverview.company_cdp_score}
       </a>
     </div>
   );

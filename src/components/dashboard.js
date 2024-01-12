@@ -16,12 +16,12 @@ import IncomeStatementChart from "./dashboard/income-statement-chart";
 import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 import StockContext from "@/context/stock-context";
 import { fetchStockOverview } from "@/api/stock-api";
-import StockOverviewContext from "@/context/stock-overview";
+import StockOverviewContext from "@/context/stock-overview-context";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
   const { stockSymbol } = useContext(StockContext);
-  const { stockOverview, setStockOverview } = useContext(StockOverviewContext);
+  const { setStockOverview } = useContext(StockOverviewContext);
 
   const [chartData, setChartData] = useState(null);
   const [incomeStatementChartData, setIncomeStatementChartData] =
@@ -58,8 +58,6 @@ export default function Dashboard() {
       fetchStockOverview(stockSymbol).then((data) => {
         if (data) {
           setStockOverview(data);
-          console.log(data);
-          console.log(stockOverview);
         }
       });
     }

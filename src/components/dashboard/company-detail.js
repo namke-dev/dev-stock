@@ -1,10 +1,8 @@
-import { mockCompanyOverviewResponse } from "@/mock/mock-data";
-import React, { useState } from "react";
+import StockOverviewContext from "@/context/stock-overview-context";
+import React, { useContext } from "react";
 
 export default function CompanyDetail() {
-  const [companyOverview, setCompanyOverview] = useState(
-    mockCompanyOverviewResponse
-  );
+  const { stockOverview } = useContext(StockOverviewContext);
   const detailListType = {
     previous_close: "Previous close",
     year_low: "Year low",
@@ -23,6 +21,7 @@ export default function CompanyDetail() {
     company_city: "City",
     company_street_address: "Address",
   };
+  if (!stockOverview) return <div>Loading . . .</div>;
 
   return (
     <>
@@ -42,7 +41,7 @@ export default function CompanyDetail() {
               className="flex-1 flex justify-between items-center py-1.5 px-3 text-sm even:bg-black/10 dark:even:bg-white/10"
             >
               <span>{detailListType[item]}</span>
-              <span>{companyOverview.data[item]}</span>
+              <span>{stockOverview[item]}</span>
             </li>
           );
         })}

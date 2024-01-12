@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ThemeSwitch from "@/components/theme-switch";
 import StockContext from "@/context/stock-context";
-import StockOverviewContext from "@/context/stock-overview";
+import StockOverviewContext from "@/context/stock-overview-context";
 import ThemeContext from "@/context/theme-context";
 import { useState } from "react";
 
@@ -22,8 +22,8 @@ export default function Home() {
             value={{ stockOverview, setStockOverview }}
           >
             <Header />
-            <Dashboard />
             <ThemeSwitch />
+            <Dashboard />
             <Footer />
           </StockOverviewContext.Provider>
         </StockContext.Provider>
