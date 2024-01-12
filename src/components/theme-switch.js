@@ -18,15 +18,12 @@ export default function ThemeSwitch() {
   };
 
   useEffect(() => {
-    console.log("Load previous theme setting");
     const localTheme = window.localStorage.getItem("theme");
     if (localTheme) {
       if (localTheme === "dark") {
-        console.log("==> Dark");
         setDarkMode(true);
         document.documentElement.classList.add("dark");
       } else {
-        console.log("==> Light");
         setDarkMode(false);
         document.documentElement.classList.remove("dark");
       }

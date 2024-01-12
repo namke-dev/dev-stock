@@ -1,9 +1,7 @@
 import StockContext from "@/context/stock-context";
-import ThemeContext from "@/context/theme-context";
 import React, { useContext } from "react";
 
-export default function SearSymbolResult({ results }) {
-  const { darkMode } = useContext(ThemeContext);
+export default function SearchSymbolResult({ results, onSelect }) {
   const { setStockSymbol } = useContext(StockContext);
 
   return (
@@ -28,9 +26,7 @@ export default function SearSymbolResult({ results }) {
               key={item.symbol}
               className="cursor-pointer p-4 m-1 flex items-center justify-between rounded-md
               dark:hover:bg-indigo-600 hover:bg-indigo-200"
-              onClick={() => {
-                setStockSymbol(item.symbol);
-              }}
+              onClick={() => onSelect(item.symbol)}
             >
               <span>{item.name}</span>
               <span>{item.symbol}</span>

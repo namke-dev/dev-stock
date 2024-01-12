@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
-import SearSymbolResult from "./search-symbol-result";
+import SearchSymbolResult from "./search-symbol-result";
 import { fetchFromApi } from "@/api/stock-api";
+import StockContext from "@/context/stock-context";
 
 export default function SearchSymbolBar() {
   const [input, setInput] = useState("");
   const [stockMatches, setStockMatches] = useState([]);
+  const { setStockSymbol } = useContext(StockContext);
 
   const clear = () => {
     setInput("");
@@ -28,6 +30,12 @@ export default function SearchSymbolBar() {
     } catch (error) {
       setStockMatches([]);
     }
+  };
+
+  const handleStockSelect = (symbol) => {
+    setStockSymbol(symbol);
+    console.log("setStockSymbol = " + symbol);
+    setStockMatches([]);
   };
 
   return (
@@ -78,7 +86,10 @@ export default function SearchSymbolBar() {
 
           {/* Search result */}
           {input && stockMatches.length > 0 ? (
-            <SearSymbolResult results={stockMatches} />
+            <SearchSymbolResult
+              results={stockMatches}
+              onSelect={handleStockSelect}
+            />
           ) : (
             ""
           )}

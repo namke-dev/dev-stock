@@ -11,7 +11,32 @@ const options = {
 };
 
 export const fetchFromApi = async (url) => {
-  console.log(`Call api => ${BASE_URL}/${url}`);
-  const { data } = await axios.get(`${BASE_URL}/${url}`, options);
-  return data;
+  try {
+    console.log(`Call api => ${BASE_URL}/${url}`);
+    const { data } = await axios.get(`${BASE_URL}/${url}`, options);
+    return data;
+  } catch (error) {
+    console.error("Error in fetchFromApi:", error);
+    throw error; // Rethrow the error so that it can be caught by the caller
+  }
+};
+
+export const fetchStockOverview = async (stockSymbol) => {
+  if (!stockSymbol) return null;
+  const url = `stock-overview?symbol=${stockSymbol}`;
+  try {
+    const response = await fetchFromApi(url);
+    if (response.status === "OK") {
+      return response.data;
+    } else {
+      console.error(
+        "Error in fetchStockOverview: Invalid response status",
+        response
+      );
+      return null;
+    }
+  } catch (error) {
+    console.error("Error in fetchStockOverview:", error);
+    return null;
+  }
 };

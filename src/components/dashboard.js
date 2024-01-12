@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Cart from "./cart";
 import SearchSymbolBar from "./dashboard/search-bar";
 import StockOverview from "./dashboard/stock-overview";
@@ -14,10 +14,14 @@ import Tabs from "./tabs";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
 import IncomeStatementChart from "./dashboard/income-statement-chart";
 import BalanceSheetChart from "./dashboard/balance-sheet-chart";
+import StockContext from "@/context/stock-context";
+import { fetchStockOverview } from "@/api/stock-api";
+import StockOverviewContext from "@/context/stock-overview";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
-  const [selectedSymbol, setSelectedSymbol] = useState(null);
+  const { stockSymbol } = useContext(StockContext);
+  const { stockOverview, setStockOverview } = useContext(StockOverviewContext);
 
   const [chartData, setChartData] = useState(null);
   const [incomeStatementChartData, setIncomeStatementChartData] =
@@ -48,6 +52,18 @@ export default function Dashboard() {
       content: <TrendCard selectedTrend={selectedTrend} />,
     },
   ];
+
+  useEffect(() => {
+    if (stockSymbol) {
+      fetchStockOverview(stockSymbol).then((data) => {
+        if (data) {
+          setStockOverview(data);
+          console.log(data);
+          console.log(stockOverview);
+        }
+      });
+    }
+  }, [stockSymbol]);
 
   useEffect(() => {
     setSelectedTrend(mockMarketTrendResponse.data.trends);
