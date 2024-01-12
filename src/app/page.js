@@ -7,12 +7,19 @@ import ThemeSwitch from "@/components/theme-switch";
 import StockContext from "@/context/stock-context";
 import StockOverviewContext from "@/context/stock-overview-context";
 import ThemeContext from "@/context/theme-context";
+import { mockCompanyOverviewResponse } from "@/mock/mock-data";
 import { useState } from "react";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
-  const [stockSymbol, setStockSymbol] = useState("NFLX:NASDAQ");
-  const [stockOverview, setStockOverview] = useState(null);
+  const [stockSymbol, setStockSymbol] = useState(null);
+
+  // const [stockSymbol, setStockSymbol] = useState("NFLX:NASDAQ");
+  // const [stockOverview, setStockOverview] = useState(null);
+
+  const [stockOverview, setStockOverview] = useState(
+    mockCompanyOverviewResponse.data
+  );
 
   return (
     <main className="flex flex-col items-center">

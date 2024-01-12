@@ -9,9 +9,11 @@ import {
   mockCompanyBalanceSheetResponse,
   mockCompanyIncomeStatementResponse,
   mockMarketTrendGainersResponse,
+  mockMarketTrendLosersResponse,
+  mockMarketTrendMarketIndexResponse,
+  mockMarketTrendMostActiveResponse,
 } from "@/mock/mock-data";
 import Tabs from "./tabs";
-// import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
 import IncomeStatementChart from "./dashboard/income-statement-chart";
 import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 import StockContext from "@/context/stock-context";
@@ -19,7 +21,6 @@ import { fetchStockOverview } from "@/api/stock-api";
 import StockOverviewContext from "@/context/stock-overview-context";
 
 export default function Dashboard() {
-  const [selectedTrend, setSelectedTrend] = useState(null);
   const { stockSymbol } = useContext(StockContext);
   const { setStockOverview } = useContext(StockOverviewContext);
 
@@ -42,14 +43,32 @@ export default function Dashboard() {
 
   const trendTabs = [
     {
-      name: "MARKET_INDEXES",
-      content: <TrendCard selectedTrend={selectedTrend} />,
+      name: "GAINERS",
+      content: (
+        <TrendCard selectedTrend={mockMarketTrendGainersResponse.data.trends} />
+      ),
     },
-    { name: "GAINERS", content: <TrendCard selectedTrend={selectedTrend} /> },
-    { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
+    {
+      name: "LOSERS",
+      content: (
+        <TrendCard selectedTrend={mockMarketTrendLosersResponse.data.trends} />
+      ),
+    },
     {
       name: "MOST_ACTIVE",
-      content: <TrendCard selectedTrend={selectedTrend} />,
+      content: (
+        <TrendCard
+          selectedTrend={mockMarketTrendMostActiveResponse.data.trends}
+        />
+      ),
+    },
+    {
+      name: "MARKET_INDEXES",
+      content: (
+        <TrendCard
+          selectedTrend={mockMarketTrendMarketIndexResponse.data.trends}
+        />
+      ),
     },
   ];
 
@@ -64,7 +83,7 @@ export default function Dashboard() {
   }, [stockSymbol]);
 
   useEffect(() => {
-    setSelectedTrend(mockMarketTrendGainersResponse.data.trends);
+    // setSelectedTrend(mockMarketTrendGainersResponse.data.trends);
     // setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
     setIncomeStatementChartData(
       mockCompanyIncomeStatementResponse.data.income_statement
