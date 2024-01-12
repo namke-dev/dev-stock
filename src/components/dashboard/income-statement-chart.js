@@ -154,9 +154,6 @@ export default function IncomeStatementChart({ chartData }) {
   }, [chartData, darkMode]);
 
   useEffect(() => {
-    // This useEffect will run after the component is rendered
-    console.log("Options:", chartOptions.options);
-    console.log("Series:", chartOptions.series);
     setDomLoaded(true);
   }, [chartOptions]);
 

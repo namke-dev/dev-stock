@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
-  const [stockSymbol, setStockSymbol] = useState(null);
+  const [stockSymbol, setStockSymbol] = useState("NFLX:NASDAQ");
   const [stockOverview, setStockOverview] = useState(null);
 
   return (

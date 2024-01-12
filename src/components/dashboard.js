@@ -11,7 +11,7 @@ import {
   mockMarketTrendResponse,
 } from "@/mock/mock-data";
 import Tabs from "./tabs";
-import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
+// import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
 import IncomeStatementChart from "./dashboard/income-statement-chart";
 import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 import StockContext from "@/context/stock-context";
@@ -23,13 +23,13 @@ export default function Dashboard() {
   const { stockSymbol } = useContext(StockContext);
   const { setStockOverview } = useContext(StockOverviewContext);
 
-  const [chartData, setChartData] = useState(null);
+  // const [chartData, setChartData] = useState(null);
   const [incomeStatementChartData, setIncomeStatementChartData] =
     useState(null);
   const [balanceSheetChartData, setBalanceSheetChartData] = useState(null);
 
   const chartTabs = [
-    { name: "TIME SERIES", content: <ChartCard chartData={chartData} /> },
+    { name: "TIME SERIES", content: <ChartCard /> },
     {
       name: "INCOME STATEMENT",
       content: <IncomeStatementChart chartData={incomeStatementChartData} />,
@@ -65,7 +65,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     setSelectedTrend(mockMarketTrendResponse.data.trends);
-    setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
+    // setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
     setIncomeStatementChartData(
       mockCompanyIncomeStatementResponse.data.income_statement
     );

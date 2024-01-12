@@ -152,14 +152,8 @@ export default function BalanceSheetChart({ chartData }) {
         },
       },
     });
-  }, [chartData, darkMode]);
-
-  useEffect(() => {
-    // This useEffect will run after the component is rendered
-    console.log("Options:", chartOptions.options);
-    console.log("Series:", chartOptions.series);
     setDomLoaded(true);
-  }, [chartOptions]);
+  }, [chartData, darkMode]);
 
   return (
     <div className="mixed-chart h-full w-full">

@@ -1,11 +1,8 @@
 import StockOverviewContext from "@/context/stock-overview-context";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 export default function StockOverview() {
   const { stockOverview } = useContext(StockOverviewContext);
-  useEffect(() => {
-    console.log(stockOverview);
-  }, [stockOverview]);
 
   if (!stockOverview) return <div>Loading . . .</div>;
 
