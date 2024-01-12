@@ -17,6 +17,7 @@ import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 
 export default function Dashboard() {
   const [selectedTrend, setSelectedTrend] = useState(null);
+  const [selectedSymbol, setSelectedSymbol] = useState(null);
 
   const [chartData, setChartData] = useState(null);
   const [incomeStatementChartData, setIncomeStatementChartData] =
@@ -37,13 +38,13 @@ export default function Dashboard() {
 
   const trendTabs = [
     {
-      name: "MARKET INDEXES",
+      name: "MARKET_INDEXES",
       content: <TrendCard selectedTrend={selectedTrend} />,
     },
     { name: "GAINERS", content: <TrendCard selectedTrend={selectedTrend} /> },
     { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
     {
-      name: "MOST ACTIVE",
+      name: "MOST_ACTIVE",
       content: <TrendCard selectedTrend={selectedTrend} />,
     },
   ];
