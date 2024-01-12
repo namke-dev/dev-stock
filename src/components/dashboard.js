@@ -8,7 +8,7 @@ import TrendCard from "./dashboard/trend-card";
 import {
   mockCompanyBalanceSheetResponse,
   mockCompanyIncomeStatementResponse,
-  mockMarketTrendResponse,
+  mockMarketTrendGainersResponse,
 } from "@/mock/mock-data";
 import Tabs from "./tabs";
 // import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
@@ -64,7 +64,7 @@ export default function Dashboard() {
   }, [stockSymbol]);
 
   useEffect(() => {
-    setSelectedTrend(mockMarketTrendResponse.data.trends);
+    setSelectedTrend(mockMarketTrendGainersResponse.data.trends);
     // setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
     setIncomeStatementChartData(
       mockCompanyIncomeStatementResponse.data.income_statement
