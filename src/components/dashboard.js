@@ -36,12 +36,12 @@ export default function Dashboard() {
   ];
 
   const trendTabs = [
+    {
+      name: "MARKET INDEXES",
+      content: <TrendCard selectedTrend={selectedTrend} />,
+    },
     { name: "GAINERS", content: <TrendCard selectedTrend={selectedTrend} /> },
     { name: "LOSERS", content: <TrendCard selectedTrend={selectedTrend} /> },
-    // {
-    //   name: "MARKET INDEXES",
-    //   content: <TrendCard selectedTrend={selectedTrend} />,
-    // },
     {
       name: "MOST ACTIVE",
       content: <TrendCard selectedTrend={selectedTrend} />,
