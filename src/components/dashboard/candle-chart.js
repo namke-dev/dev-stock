@@ -39,12 +39,14 @@ const CandleChart = ({ chartData }) => {
       }
     );
 
-    // set default on-chart filter
-    const lastDate = new Date(Object.keys(chartData)[0]);
+    const dateKeys = Object.keys(chartData);
+
+    const lastDate = new Date(dateKeys[0]);
+    const startDate = new Date(dateKeys[dateKeys.length - 1]);
+
     const tmpDate = new Date(lastDate);
     tmpDate.setDate(tmpDate.getDate() - 20);
-    const lastKeyDate = new Date(Object.keys(chartData).slice(-1)[0]);
-    const firstDate = new Date(Math.max(tmpDate, lastKeyDate));
+    const firstDate = new Date(Math.min(tmpDate, startDate));
 
     setChartOptions({
       series: [
@@ -81,7 +83,7 @@ const CandleChart = ({ chartData }) => {
             fontSize: "18px",
             fontWeight: "bold",
             fontFamily: undefined,
-            color: darkMode ? "#AAAAAA" : "#263238",
+            color: darkMode ? "#999999" : "#263238",
           },
         },
         legend: {
