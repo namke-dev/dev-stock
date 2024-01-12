@@ -81,7 +81,7 @@ export default function IncomeStatementChart({ chartData }) {
           borderColor: darkMode ? "#555555" : "#e7e7e7",
           row: {
             colors: [darkMode ? "#555555" : "#f3f3f3", "transparent"],
-            opacity: 0.3,
+            opacity: 0.1,
           },
         },
         markers: {

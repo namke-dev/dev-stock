@@ -120,6 +120,13 @@ const CandleChart = ({ chartData }) => {
           },
           forceNiceScale: true,
         },
+        grid: {
+          borderColor: darkMode ? "#555555" : "#e7e7e7",
+          row: {
+            colors: [darkMode ? "#555555" : "#f3f3f3", "transparent"],
+            opacity: 0.1,
+          },
+        },
         tooltip: {
           enabled: true,
           followCursor: true,
@@ -198,6 +205,13 @@ const CandleChart = ({ chartData }) => {
             },
           },
           forceNiceScale: true,
+        },
+        grid: {
+          borderColor: darkMode ? "#555555" : "#e7e7e7",
+          row: {
+            colors: [darkMode ? "#555555" : "#f3f3f3", "transparent"],
+            opacity: 0.1,
+          },
         },
         tooltip: {
           enabled: true,
