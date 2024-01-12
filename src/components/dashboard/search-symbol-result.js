@@ -29,7 +29,7 @@ export default function SearSymbolResult({ results }) {
             <li
               key={item.symbol}
               className={`cursor-pointer p-4 m-1 flex items-center justify-between rounded-md
-          ${darkMode ? "hover:bg-indigo-600" : "hover:bg-indigo-200"}`}
+              ${darkMode ? "hover:bg-indigo-600" : "hover:bg-indigo-200"}`}
               onClick={() => {
                 setStockSymbol(item.symbol);
               }}
