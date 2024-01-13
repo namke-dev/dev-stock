@@ -41,7 +41,7 @@ export default function ChartCard() {
         {/* chart option filter */}
         <ul
           className=" flex flex-row flex-wrap 
-          z-40 md:gap-2
+          md:gap-2
           items-center 
           justify-end
           md:justify-end"
