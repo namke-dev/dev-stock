@@ -1,6 +1,8 @@
-import React from "react";
+import LoadingBarContext from "@/context/loading-bar-context";
+import React, { useContext } from "react";
 
-export const LoadingBar = ({ isLoading }) => {
+export const LoadingBar = () => {
+  const { isLoading } = useContext(LoadingBarContext);
   return (
     <div
       className={`

@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { LoadingBar } from "@/components/loading-bar";
 import ThemeSwitch from "@/components/theme-switch";
+import LoadingBarContext from "@/context/loading-bar-context";
 import SymbolContext from "@/context/stock-context";
 import StockOverviewContext from "@/context/stock-overview-context";
 import ThemeContext from "@/context/theme-context";
@@ -21,6 +22,7 @@ export default function Home() {
   const [stockOverview, setStockOverview] = useState(
     mockCompanyOverviewResponse.data
   );
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <main className="flex flex-col items-center">
@@ -29,11 +31,13 @@ export default function Home() {
           <StockOverviewContext.Provider
             value={{ stockOverview, setStockOverview }}
           >
-            <LoadingBar isLoading={true} />
-            <Header />
-            <ThemeSwitch />
-            <Dashboard />
-            <Footer />
+            <LoadingBarContext.Provider value={{ isLoading, setIsLoading }}>
+              <LoadingBar />
+              <Header />
+              <ThemeSwitch />
+              <Dashboard />
+              <Footer />
+            </LoadingBarContext.Provider>
           </StockOverviewContext.Provider>
         </SymbolContext.Provider>
       </ThemeContext.Provider>
