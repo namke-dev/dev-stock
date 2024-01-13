@@ -4,7 +4,7 @@ import Dashboard from "@/components/dashboard";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ThemeSwitch from "@/components/theme-switch";
-import StockContext from "@/context/stock-context";
+import SymbolContext from "@/context/stock-context";
 import StockOverviewContext from "@/context/stock-overview-context";
 import ThemeContext from "@/context/theme-context";
 import { mockCompanyOverviewResponse } from "@/mock/mock-data";
@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center">
       <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
-        <StockContext.Provider value={{ stockSymbol, setStockSymbol }}>
+        <SymbolContext.Provider value={{ stockSymbol, setStockSymbol }}>
           <StockOverviewContext.Provider
             value={{ stockOverview, setStockOverview }}
           >
@@ -33,7 +33,7 @@ export default function Home() {
             <Dashboard />
             <Footer />
           </StockOverviewContext.Provider>
-        </StockContext.Provider>
+        </SymbolContext.Provider>
       </ThemeContext.Provider>
     </main>
   );

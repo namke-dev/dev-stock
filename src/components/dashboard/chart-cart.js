@@ -2,14 +2,14 @@ import { CHART_FILTER } from "@/const/stock-option-const";
 import React, { useContext, useEffect, useState } from "react";
 import ChartFilter from "./chart-filter";
 import CandleChart from "./candle-chart";
-import StockContext from "@/context/stock-context";
+import SymbolContext from "@/context/stock-context";
 import { fetchStockTimeSeriesDaily } from "@/api/stock-api";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
 
 export default function ChartCard() {
   const [filter, setFilter] = useState("1M");
   const [domLoaded, setDomLoaded] = useState(false);
-  const { stockSymbol } = useContext(StockContext);
+  const { stockSymbol } = useContext(SymbolContext);
   // stockSymbol
   // const [chartData, setChartData] = useState(null);
   const [chartData, setChartData] = useState(

@@ -4,12 +4,12 @@ import React, { useContext, useState } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import SearchSymbolResult from "./search-symbol-result";
 import { fetchFromApi } from "@/api/stock-api";
-import StockContext from "@/context/stock-context";
+import SymbolContext from "@/context/stock-context";
 
 export default function SearchSymbolBar() {
   const [input, setInput] = useState("");
   const [stockMatches, setStockMatches] = useState([]);
-  const { setStockSymbol } = useContext(StockContext);
+  const { setStockSymbol } = useContext(SymbolContext);
 
   const clear = () => {
     setInput("");

@@ -1,8 +1,8 @@
-import StockContext from "@/context/stock-context";
+import SymbolContext from "@/context/stock-context";
 import React, { useContext } from "react";
 
 export default function TrendCardDetail({ stockDetail }) {
-  const { setStockSymbol } = useContext(StockContext);
+  const { setStockSymbol } = useContext(SymbolContext);
   return (
     <div
       className="flex gap-3 justify-between px-5

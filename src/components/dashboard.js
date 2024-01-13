@@ -16,12 +16,12 @@ import {
 import Tabs from "./tabs";
 import IncomeStatementChart from "./dashboard/income-statement-chart";
 import BalanceSheetChart from "./dashboard/balance-sheet-chart";
-import StockContext from "@/context/stock-context";
+import SymbolContext from "@/context/stock-context";
 import { fetchStockOverview } from "@/api/stock-api";
 import StockOverviewContext from "@/context/stock-overview-context";
 
 export default function Dashboard() {
-  const { stockSymbol } = useContext(StockContext);
+  const { stockSymbol } = useContext(SymbolContext);
   const { setStockOverview } = useContext(StockOverviewContext);
 
   // const [chartData, setChartData] = useState(null);
