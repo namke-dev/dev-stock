@@ -1,9 +1,6 @@
-import SymbolContext from "@/context/stock-context";
-import React, { useContext } from "react";
+import React from "react";
 
 export default function SearchSymbolResult({ results, onSelect }) {
-  const { setStockSymbol } = useContext(SymbolContext);
-
   return (
     <ul
       className="absolute top-10 
@@ -14,7 +11,7 @@ export default function SearchSymbolResult({ results, onSelect }) {
         pl-1
         py-1
         custom-scrollbar
-        z-50
+        z-10
         dark:bg-gray-700 dark:border-gray-700
         bg-gray-50
         "

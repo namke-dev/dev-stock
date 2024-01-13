@@ -47,7 +47,7 @@ export default function SearchSymbolBar() {
           border-2 border-indigo-200 dark:border-indigo-900
           rounded-md
           relative
-          z-50
+          z-10
           w-full
           md:max-w-[30rem]
           h-10

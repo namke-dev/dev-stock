@@ -3,6 +3,7 @@
 import Dashboard from "@/components/dashboard";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { LoadingBar } from "@/components/loading-bar";
 import ThemeSwitch from "@/components/theme-switch";
 import SymbolContext from "@/context/stock-context";
 import StockOverviewContext from "@/context/stock-overview-context";
@@ -28,6 +29,7 @@ export default function Home() {
           <StockOverviewContext.Provider
             value={{ stockOverview, setStockOverview }}
           >
+            <LoadingBar isLoading={true} />
             <Header />
             <ThemeSwitch />
             <Dashboard />
