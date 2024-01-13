@@ -48,7 +48,7 @@ export default function StockOverview() {
         href={stockOverview.company_cdp_url}
         target="_blank"
       >
-        CDP: {stockOverview.company_cdp_score}
+        CDP Score: {stockOverview.company_cdp_score}
       </a>
     </div>
   );
