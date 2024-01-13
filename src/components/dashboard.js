@@ -75,17 +75,25 @@ export default function Dashboard() {
   ];
 
   useEffect(() => {
-    setIsLoading(true);
-    console.log("set symbol context");
+    const fetchData = async () => {
+      setIsLoading(true);
+      console.log("set symbol context");
 
-    if (stockSymbol) {
-      fetchStockOverview(stockSymbol).then((data) => {
-        if (data) {
-          setStockOverview(data);
+      if (stockSymbol) {
+        try {
+          const data = await fetchStockOverview(stockSymbol);
+          if (data) {
+            setStockOverview(data);
+          }
+        } finally {
+          setIsLoading(false);
         }
-      });
-    }
-    setIsLoading(false);
+      } else {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, [stockSymbol]);
 
   useEffect(() => {

@@ -5,11 +5,13 @@ import { FaSearch, FaTimes } from "react-icons/fa";
 import SearchSymbolResult from "./search-symbol-result";
 import { fetchGetSearchSymbolResult } from "@/api/stock-api";
 import SymbolContext from "@/context/stock-context";
+import LoadingBarContext from "@/context/loading-bar-context";
 
 export default function SearchSymbolBar() {
   const [searchTerm, setSetSearchTerm] = useState("");
   const [stockMatches, setStockMatches] = useState([]);
   const { setStockSymbol } = useContext(SymbolContext);
+  const { setIsLoading } = useContext(LoadingBarContext);
 
   const clear = () => {
     setSetSearchTerm("");
@@ -17,11 +19,12 @@ export default function SearchSymbolBar() {
   };
 
   const updateSearchResults = async () => {
-    fetchGetSearchSymbolResult(searchTerm).then((data) => {
-      if (data) {
-        setStockMatches(data);
-      }
-    });
+    try {
+      setIsLoading(true);
+      setStockMatches(await fetchGetSearchSymbolResult(searchTerm));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleStockSelect = (symbol) => {
