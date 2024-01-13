@@ -25,7 +25,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="flex flex-col items-center">
+    <main>
       <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
         <SymbolContext.Provider value={{ stockSymbol, setStockSymbol }}>
           <StockOverviewContext.Provider
