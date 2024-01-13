@@ -67,6 +67,22 @@ export const fetchStockOverview = async (stockSymbol) => {
   }
 };
 
+export const fetchGetSearchSymbolResult = async (searchTerm) => {
+  try {
+    if (searchTerm) {
+      const url = `search?query=${searchTerm}`;
+      const response = await fetchFromOpenNinjaApi(url);
+
+      if (response.status === "OK") {
+        return response.data.stock;
+      }
+    }
+  } catch (error) {
+    console.error("Error in fetchGetSearchSymbolResult:", error);
+    return [];
+  }
+};
+
 export const fetchStockTimeSeriesDaily = async (stockSymbol, functionName) => {
   if (!stockSymbol || !functionName) return null;
 

@@ -3,33 +3,25 @@
 import React, { useContext, useState } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import SearchSymbolResult from "./search-symbol-result";
-import { fetchFromApi } from "@/api/stock-api";
+import { fetchGetSearchSymbolResult } from "@/api/stock-api";
 import SymbolContext from "@/context/stock-context";
 
 export default function SearchSymbolBar() {
-  const [input, setInput] = useState("");
+  const [searchTerm, setSetSearchTerm] = useState("");
   const [stockMatches, setStockMatches] = useState([]);
   const { setStockSymbol } = useContext(SymbolContext);
 
   const clear = () => {
-    setInput("");
+    setSetSearchTerm("");
     setStockMatches([]);
   };
 
   const updateSearchResults = async () => {
-    try {
-      if (input) {
-        const url = `search?query=${input}`;
-        const response = await fetchFromApi(url);
-
-        if (response.status === "OK") {
-          const result = response.data.stock;
-          setStockMatches(result);
-        }
+    fetchGetSearchSymbolResult(searchTerm).then((data) => {
+      if (data) {
+        setStockMatches(data);
       }
-    } catch (error) {
-      setStockMatches([]);
-    }
+    });
   };
 
   const handleStockSelect = (symbol) => {
@@ -57,9 +49,9 @@ export default function SearchSymbolBar() {
             type="text"
             className="mx-3 focus:outline-0 flex flex-grow bg-gray-50 dark:bg-gray-700"
             placeholder="ex: google"
-            value={input}
+            value={searchTerm}
             onChange={(event) => {
-              setInput(event.target.value);
+              setSetSearchTerm(event.target.value);
               setStockMatches([]);
             }}
             onKeyDown={(event) => {
@@ -70,7 +62,7 @@ export default function SearchSymbolBar() {
           />
 
           {/* Clear button */}
-          {input && (
+          {searchTerm && (
             <button onClick={clear} className="m-1">
               <FaTimes className="h-4 w-4 fill-gray-400" />
             </button>
@@ -85,7 +77,7 @@ export default function SearchSymbolBar() {
           </button>
 
           {/* Search result */}
-          {input && stockMatches.length > 0 ? (
+          {searchTerm && stockMatches.length > 0 ? (
             <SearchSymbolResult
               results={stockMatches}
               onSelect={handleStockSelect}
