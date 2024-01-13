@@ -37,8 +37,7 @@ export default function ChartCard() {
   if (!chartData) return <div>Loading . . .</div>;
   return (
     <div className="h-full w-full flex flex-col">
-      <div className="flex flex-row w-full h-auto text-lg font-semibold justify-between items-center pl-2">
-        {/* chart option filter */}
+      {/* <div className="flex flex-row w-full h-auto text-lg font-semibold justify-between items-center pl-2">
         <ul
           className=" flex flex-row flex-wrap 
           md:gap-2
@@ -60,7 +59,7 @@ export default function ChartCard() {
             );
           })}
         </ul>
-      </div>
+      </div> */}
 
       {/* Only render chart when all dom is loaded */}
       <div className="h-full w-full py-1">
