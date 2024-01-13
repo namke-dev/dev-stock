@@ -19,10 +19,12 @@ import BalanceSheetChart from "./dashboard/balance-sheet-chart";
 import SymbolContext from "@/context/stock-context";
 import { fetchStockOverview } from "@/api/stock-api";
 import StockOverviewContext from "@/context/stock-overview-context";
+import LoadingBarContext from "@/context/loading-bar-context";
 
 export default function Dashboard() {
   const { stockSymbol } = useContext(SymbolContext);
   const { setStockOverview } = useContext(StockOverviewContext);
+  const { setIsLoading } = useContext(LoadingBarContext);
 
   // const [chartData, setChartData] = useState(null);
   const [incomeStatementChartData, setIncomeStatementChartData] =
@@ -73,6 +75,9 @@ export default function Dashboard() {
   ];
 
   useEffect(() => {
+    setIsLoading(true);
+    console.log("set symbol context");
+
     if (stockSymbol) {
       fetchStockOverview(stockSymbol).then((data) => {
         if (data) {
@@ -80,6 +85,7 @@ export default function Dashboard() {
         }
       });
     }
+    setIsLoading(false);
   }, [stockSymbol]);
 
   useEffect(() => {

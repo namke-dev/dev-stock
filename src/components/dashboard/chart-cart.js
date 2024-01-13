@@ -5,6 +5,7 @@ import CandleChart from "./candle-chart";
 import SymbolContext from "@/context/stock-context";
 import { fetchStockTimeSeriesDaily } from "@/api/stock-api";
 import { mockTimeSeriesDailyAdjust } from "@/mock/mock-time-series";
+import LoadingBarContext from "@/context/loading-bar-context";
 
 export default function ChartCard() {
   const [filter, setFilter] = useState("1M");
@@ -16,9 +17,11 @@ export default function ChartCard() {
     mockTimeSeriesDailyAdjust["Time Series (Daily)"]
   );
 
-  useEffect(() => {
-    const functionName = "TIME_SERIES_DAILY_ADJUSTED";
+  const { setIsLoading } = useContext(LoadingBarContext);
 
+  useEffect(() => {
+    // setIsLoading(true);
+    const functionName = "TIME_SERIES_DAILY_ADJUSTED";
     if (stockSymbol) {
       fetchStockTimeSeriesDaily(stockSymbol, functionName).then((data) => {
         if (data) {
@@ -28,6 +31,7 @@ export default function ChartCard() {
     }
 
     setDomLoaded(true);
+    // setIsLoading(false);
   }, [stockSymbol]);
 
   if (!chartData) return <div>Loading . . .</div>;

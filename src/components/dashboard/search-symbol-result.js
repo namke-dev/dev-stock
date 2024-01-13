@@ -11,7 +11,7 @@ export default function SearchSymbolResult({ results, onSelect }) {
         pl-1
         py-1
         custom-scrollbar
-        z-10
+        z-20
         dark:bg-gray-700 dark:border-gray-700
         bg-gray-50
         "

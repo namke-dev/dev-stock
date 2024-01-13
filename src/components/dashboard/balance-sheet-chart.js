@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import ThemeContext from "@/context/theme-context";
 import { formatAxisLabel } from "@/utils/chart-helper";
+import LoadingBarContext from "@/context/loading-bar-context";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
@@ -10,8 +11,9 @@ export default function BalanceSheetChart({ chartData }) {
   const { darkMode } = useContext(ThemeContext);
   const [chartOptions, setChartOptions] = useState({});
   const [domLoaded, setDomLoaded] = useState(false);
-
+  const { setIsLoading } = useContext(LoadingBarContext);
   useEffect(() => {
+    // setIsLoading(true);
     const darkThemelineColors = ["#77B6EA", "#00CC00", "#888888"];
     const lightThemelineColors = ["#77B6EA", "#00CC00", "#888888"];
     const colorPalette = darkMode ? darkThemelineColors : lightThemelineColors;
@@ -153,6 +155,7 @@ export default function BalanceSheetChart({ chartData }) {
       },
     });
     setDomLoaded(true);
+    // setIsLoading(false);
   }, [chartData, darkMode]);
 
   return (
