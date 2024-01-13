@@ -45,8 +45,8 @@ const CandleChart = ({ chartData }) => {
     const startDate = new Date(dateKeys[dateKeys.length - 1]);
 
     const tmpDate = new Date(lastDate);
-    tmpDate.setDate(tmpDate.getDate() - 20);
-    const firstDate = new Date(Math.min(tmpDate, startDate));
+    tmpDate.setDate(tmpDate.getDate() - 30);
+    const firstDate = new Date(Math.max(tmpDate, startDate));
 
     setChartOptions({
       series: [
