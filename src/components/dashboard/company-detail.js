@@ -39,7 +39,7 @@ export default function CompanyDetail() {
           return (
             <li
               key={item}
-              className="flex-1 flex justify-between items-center py-1.5 px-3 text-sm even:bg-black/10 dark:even:bg-white/10"
+              className="flex-1 flex justify-between items-center py-1.5 px-3 text-sm even:bg-black/5 dark:even:bg-white/5"
             >
               <span className="font-semibold dark:text-white/80">
                 {detailListType[item]}

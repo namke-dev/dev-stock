@@ -32,11 +32,19 @@ export default function TrendCardDetail({ stockDetail }) {
       <p className="flex-1 text-right">
         {parseFloat(stockDetail.price).toFixed(2)}
       </p>
-      <p className="flex-1 text-right">
+      <p
+        className={`flex-1 text-right font-semibold ${
+          stockDetail.change_percent > 10
+            ? "text-purple-500"
+            : stockDetail.change_percent > 0
+            ? "text-green-500"
+            : "text-red-500"
+        }`}
+      >
         {parseFloat(stockDetail.change).toFixed(2)}
       </p>
       <p
-        className={`flex-1 text-right ${
+        className={`flex-1 text-right font-semibold ${
           stockDetail.change_percent > 10
             ? "text-purple-500"
             : stockDetail.change_percent > 0
