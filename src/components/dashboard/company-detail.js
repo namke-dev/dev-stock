@@ -1,4 +1,5 @@
 import StockOverviewContext from "@/context/stock-overview-context";
+import { formatAxisLabel } from "@/utils/chart-helper";
 import React, { useContext } from "react";
 
 export default function CompanyDetail() {
@@ -40,8 +41,14 @@ export default function CompanyDetail() {
               key={item}
               className="flex-1 flex justify-between items-center py-1.5 px-3 text-sm even:bg-black/10 dark:even:bg-white/10"
             >
-              <span>{detailListType[item]}</span>
-              <span>{stockOverview[item]}</span>
+              <span className="font-semibold text-white/80">
+                {detailListType[item]}
+              </span>
+              <span>
+                {stockOverview[item] >= 1000
+                  ? formatAxisLabel(stockOverview[item], 2)
+                  : stockOverview[item]}
+              </span>
             </li>
           );
         })}
