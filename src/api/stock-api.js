@@ -19,7 +19,7 @@ const optionsAlphaVantageApi = {
   },
 };
 
-export const fetchFromApi = async (url) => {
+export const fetchFromOpenNinjaApi = async (url) => {
   try {
     console.log(`Call api => ${BASE_URL_OPEN_NINJA}/${url}`);
     const { data } = await axios.get(
@@ -33,7 +33,7 @@ export const fetchFromApi = async (url) => {
   }
 };
 
-export const fetchFromTimeSeriesApi = async (url) => {
+export const fetchFromAlphaVantageApi = async (url) => {
   try {
     console.log(`Call api => ${BASE_URL_ALPHA_VANTAGE}/${url}`);
     const { data } = await axios.get(
@@ -51,7 +51,7 @@ export const fetchStockOverview = async (stockSymbol) => {
   if (!stockSymbol) return null;
   const url = `stock-overview?symbol=${stockSymbol}`;
   try {
-    const response = await fetchFromApi(url);
+    const response = await fetchFromOpenNinjaApi(url);
     if (response.status === "OK") {
       return response.data;
     } else {
@@ -75,7 +75,7 @@ export const fetchStockTimeSeriesDaily = async (stockSymbol, functionName) => {
   }&function=${functionName}`;
 
   try {
-    const response = await fetchFromTimeSeriesApi(url);
+    const response = await fetchFromAlphaVantageApi(url);
     if (response) {
       return response;
     } else {
