@@ -1,6 +1,8 @@
-import React from "react";
+import StockContext from "@/context/stock-context";
+import React, { useContext } from "react";
 
 export default function TrendCardDetail({ stockDetail }) {
+  const { setStockSymbol } = useContext(StockContext);
   return (
     <div
       className="flex gap-3 justify-between px-5
@@ -9,7 +11,11 @@ export default function TrendCardDetail({ stockDetail }) {
       dark:text-white/60
       dark:hover:text-white/90
       dark:hover:bg-white/30
+      cursor-pointer
       "
+      onClick={() => {
+        setStockSymbol(stockDetail.symbol);
+      }}
     >
       <p
         className={`flex-1 font-semibold ${
