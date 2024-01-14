@@ -27,6 +27,9 @@ export default function ThemeSwitch() {
         setDarkMode(false);
         document.documentElement.classList.remove("dark");
       }
+    } else {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
