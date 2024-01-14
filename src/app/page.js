@@ -13,7 +13,7 @@ import { mockCompanyOverviewResponse } from "@/mock/mock-data";
 import { useState } from "react";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [stockSymbol, setStockSymbol] = useState(null);
 
   // const [stockSymbol, setStockSymbol] = useState("NFLX:NASDAQ");
@@ -22,7 +22,7 @@ export default function Home() {
   const [stockOverview, setStockOverview] = useState(
     mockCompanyOverviewResponse.data
   );
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <main>
