@@ -97,8 +97,6 @@ export default function Dashboard() {
   }, [stockSymbol]);
 
   useEffect(() => {
-    // setSelectedTrend(mockMarketTrendGainersResponse.data.trends);
-    // setChartData(mockTimeSeriesDailyAdjust["Time Series (Daily)"]);
     setIncomeStatementChartData(
       mockCompanyIncomeStatementResponse.data.income_statement
     );
